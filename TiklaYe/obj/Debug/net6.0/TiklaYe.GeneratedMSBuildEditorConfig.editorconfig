@@ -9,39 +9,51 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TiklaYe
 build_property.RootNamespace = TiklaYe
-build_property.ProjectDir = C:\Users\Melike\source\repos\TiklaYe\
+build_property.ProjectDir = C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Melike\source\repos\TiklaYe
+build_property.MSBuildProjectDirectory = C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Melike/source/repos/TiklaYe/Views/Home/Index.cshtml]
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/About/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Feedback/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Melike/source/repos/TiklaYe/Views/Home/Privacy.cshtml]
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Melike/source/repos/TiklaYe/Views/Shared/Error.cshtml]
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Menu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Melike/source/repos/TiklaYe/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Melike/source/repos/TiklaYe/Views/_ViewImports.cshtml]
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Melike/source/repos/TiklaYe/Views/_ViewStart.cshtml]
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Melike/source/repos/TiklaYe/Views/Shared/_Layout.cshtml]
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-k0t35kcg39

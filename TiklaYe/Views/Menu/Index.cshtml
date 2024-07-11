@@ -1,59 +1,14 @@
 ﻿@{
-    ViewData["Title"] = "Ana Sayfa";
+    ViewData["Title"] = "Menü";
     Layout = "_Layout";
 }
 
-<!-- offer section -->
-<section class="offer_section layout_padding-bottom">
-    <div class="offer_container">
-        <div class="container ">
-            <div class="row">
-                <div class="col-md-6  ">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="/images/o1.jpg" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Hamburger Günleri
-                            </h5>
-                            <h6>
-                                <span>20%</span> İndirim
-                            </h6>
-                            <a href="">
-                                Şimdi Sipariş Ver
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 ">
-                    <div class="box">
-                        <div class="img-box">
-                            <img src="/images/o2.jpg" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Pizza Günleri
-                            </h5>
-                            <h6>
-                                <span>15%</span> İndirim
-                            </h6>
-                            <a href="">
-                                Şimdi Sipariş Ver
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- end offer section -->
 <!-- food section -->
 <section class="food_section layout_padding-bottom">
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
+                <br><br>
                 Menümüz
             </h2>
         </div>
@@ -315,75 +270,3 @@
     </div>
 </section>
 <!-- end food section -->
-<!-- about section -->
-<section class="about_section layout_padding">
-    <div class="container  ">
-        <div class="row">
-            <div class="col-md-6 ">
-                <div class="img-box">
-                    <img src="/images/about.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="detail-box">
-                    <div class="heading_container">
-                        <h2>
-                            Biz Kimiz?
-                        </h2>
-                    </div>
-                    <p>
-                        Tıkla Ye, yemek tutkunu ve kaliteli yemek arayan herkes için tasarlanmış bir platformdur. <br>
-                        Tutkuyla yaratılan lezzetlerin buluşma noktasıdır. <br>
-                        Misyonumuz, en taze ve kaliteli malzemelerle hazırlanan yemekleri güvenilir bir şekilde sizlere ulaştırmak ve lezzet dolu anlarınıza eşlik etmektir.<br>
-                        Ayrıca, yenilikçi yaklaşımlarla yemek deneyimini kolaylaştırmak ve her damak tadına hitap etmektir.<br>
-                        Müşteri memnuniyetini ön planda tutarak, yemek kültürünü yeniden tanımlıyoruz.<br>
-                        Yüksek standartlarda hijyen ve kalite kontrolüyle, lezzetli yemekleri doğrudan kapınıza getiriyoruz. <br>
-                        Tıkla Ye olarak, lezzetli bir yolculuğa çıkmanızı sağlamak için buradayız.
-                    </p>
-                    <a href="">
-                        Daha Fazla Oku
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- end about section -->
-<!-- feedback section -->
-<section class="feedback_section layout_padding">
-    <div class="container">
-        <div class="col-12">
-            <h2 class="contact-title">Geri Bildirim</h2>
-        </div>
-        <div class="col-lg-8">
-            <form class="form-contact contact_form" method="post" id="contactForm" novalidate="novalidate">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group">
-                            <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mesajınızı yazınız..'" placeholder="Mesajınızı yazınız.."></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ad Soyad'" placeholder="Ad Soyad">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konu'" placeholder="Konu">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group mt-3">
-                    <button type="submit">Gönder</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
-<!-- end feedback section -->

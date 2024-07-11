@@ -6,7 +6,7 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <title>@ViewData["Title"] TıklaYe</title>
+    <title>TıklaYe.com/@ViewData["Title"]</title>
 
     <link rel="shortcut icon" href="/images/logo1.png">
     <link rel="stylesheet" href="/css/style.css">
@@ -37,16 +37,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  mx-auto ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Anasayfa</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="menu.html">Menü</a>
+                                <a class="nav-link" asp-controller="Menu" asp-action="Index">Menü</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">Hakkımızda</a>
+                                <a class="nav-link" asp-controller="About" asp-action="Index">Hakkımızda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="feedback.html">Geri Bildirim</a>
+                                <a class="nav-link" asp-controller="Feedback" asp-action="Index">Geri Bildirim</a>
                             </li>
                         </ul>
                         <div class="user_option">
@@ -62,7 +62,7 @@
                                 </button>
                             </form>
                             <a href="" class="order_online">
-                                Online Sipariş Verin
+                                Giriş Yap
                             </a>
                         </div>
                     </div>
@@ -174,5 +174,6 @@
         </div>
     </footer>
     <!-- footer section -->
+    <script src="/js/site.js"></script>
 </body>
 </html>
