@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zc5Y5Ufv/Qa5uD06gwLcy49dJGLm5KFS1IbdHvRVW20=",
+  "Hash": "pZARzEnT5tJzG0YiYUtABd7yBRurd9qUeu9rF+CCEbk=",
   "Source": "TiklaYe",
   "BasePath": "_content/TiklaYe",
   "Mode": "Default",
@@ -414,6 +414,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\o2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\tatli.jpg",
+      "SourceId": "TiklaYe",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\",
+      "BasePath": "_content/TiklaYe",
+      "RelativePath": "images/tatli.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tatli.jpg"
     },
     {
       "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\js\\site.js",

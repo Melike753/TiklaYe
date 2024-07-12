@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="/css/admin.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <script src="/js/site.js"></script>
+    @RenderSection("Styles", required: false)
 </head>
 
 <body>
@@ -23,7 +26,7 @@
                         <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                               aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                           href="index.html">
+                           asp-controller="Admin" asp-action="Index">
                             <i class="material-icons">home</i>
                             <span class="ml-4">Anasayfa</span>
                         </a>
@@ -32,7 +35,7 @@
                 <ul>
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                           href="categories.html">
+                           asp-controller="Category" asp-action="Index">
                             <i class="material-icons">view_list</i>
                             <span class="ml-4">Kategoriler</span>
                         </a>
@@ -141,6 +144,7 @@
 
         </div>
     </div>
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>

@@ -81,6 +81,10 @@
       "PackagePath": "staticwebassets\\images\\o2.jpg"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\tatli.jpg",
+      "PackagePath": "staticwebassets\\images\\tatli.jpg"
+    },
+    {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

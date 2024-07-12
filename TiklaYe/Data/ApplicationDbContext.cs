@@ -18,5 +18,15 @@ namespace TiklaYe.Data
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Payment> Payments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Category için CreatedDate özelliğinin datetime2 olarak tanımlanması
+            modelBuilder.Entity<Category>()
+                .Property(c => c.CreatedDate)
+                .HasColumnType("datetime2");
+        }
     }
 }
