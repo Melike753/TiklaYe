@@ -60,7 +60,14 @@
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </button>
                             </form>
-                            <a asp-controller="Account" asp-action="Register" class="order_online">Kayıt Ol</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Login" asp-action="Logout" method="post" class="order_online">Çıkış Yap</a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Login" asp-action="Login" class="order_online">Giriş Yap</a>
+                            }
                         </div>
                     </div>
                 </nav>

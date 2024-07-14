@@ -18,7 +18,6 @@ namespace TiklaYe.Models
         [Required(ErrorMessage = "E-Posta gereklidir.")]
         [EmailAddress(ErrorMessage = "Geçerli bir e-posta adresi giriniz.")]
         [StringLength(50)]
-
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Telefon Numarası gereklidir.")]
