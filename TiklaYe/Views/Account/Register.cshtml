@@ -1,0 +1,104 @@
+﻿@model TiklaYe.Models.RegisterViewModel
+
+@{
+    Layout = null; // Bu sayfada layout kullanmayacağım
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kayıt Ol - TıklaYe</title>
+    <link rel="shortcut icon" href="/images/logo1.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/account.css">
+</head>
+<body class="fix-menu">
+    <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="signup-card card-block auth-body mr-auto ml-auto">
+                        <form id="registerForm" asp-action="Register" asp-controller="Account" method="post" class="md-float-material">
+                            <div class="auth-box">
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-title txt-primary">Kayıt Ol</h3>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="input-group">
+                                    <input asp-for="Name" class="form-control" placeholder="Ad Soyad" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input asp-for="Username" class="form-control" placeholder="Kullanıcı Adı" />
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input asp-for="Email" class="form-control" placeholder="E-posta Adresi" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input asp-for="Mobile" class="form-control" placeholder="Telefon Numarası" />
+                                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input asp-for="Address" class="form-control" placeholder="Adres" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input asp-for="PostCode" class="form-control" placeholder="Posta Kodu" />
+                                    <span asp-validation-for="PostCode" class="text-danger"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input asp-for="Password" class="form-control" type="password" placeholder="Şifre" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input asp-for="ConfirmPassword" class="form-control" type="password" placeholder="Şifreyi Onayla" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <div class="row m-t-25 text-left">
+                                    <div class="col-md-12">
+                                        <div class="checkbox-fade fade-in-primary">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                <span class="text-inverse">Okudum ve kabul ediyorum <a href="#">Şartlar &amp; Kullanım Koşulları.</a></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="checkbox-fade fade-in-primary">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                <span class="text-inverse"><a href="#!">Tıkla Ye</a> 'nin bana öze kampanya, tanıtım ve fırsatlarından haberdar olmak istiyorum.</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-t-30">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Kayıt Ol</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <p class="text-login text-left m-b-0">Zaten hesabınız var mı?  <a asp-controller="Login" asp-action="Login"><b class="f-w-600">Giriş Yap</b></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

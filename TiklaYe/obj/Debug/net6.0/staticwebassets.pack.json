@@ -5,16 +5,16 @@
       "PackagePath": "staticwebassets\\TiklaYe.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\account.css",
+      "PackagePath": "staticwebassets\\css\\account.css"
+    },
+    {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\admin.css",
       "PackagePath": "staticwebassets\\css\\admin.css"
     },
     {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.css"
-    },
-    {
-      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\style.css",
@@ -27,6 +27,10 @@
     {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\about.png",
       "PackagePath": "staticwebassets\\images\\about.png"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg-register.jpg",
+      "PackagePath": "staticwebassets\\images\\bg-register.jpg"
     },
     {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg2.jpg",

@@ -160,8 +160,9 @@
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="ImageUrlFile">Görsel</label>
-                                                <input type="file" asp-for="ImageUrlFile" class="form-control" />
+                                                <input type="file" id="ImageUrlFile" name="ImageUrlFile" class="form-control" />
                                                 <span asp-validation-for="ImageUrlFile" class="text-danger"></span>
+                                                <img id="imagePreview" src="#" alt="Image Preview" style="display:none; max-width: 80px; margin-top: 10px;" />
                                             </div>
                                             <div class="form-check">
                                                 <input asp-for="IsActive" class="form-check-input" checked="@(Model.IsActive)" />
@@ -179,3 +180,19 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('ImageUrlFile').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}

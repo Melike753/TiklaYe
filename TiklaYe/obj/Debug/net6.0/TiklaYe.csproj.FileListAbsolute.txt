@@ -143,3 +143,13 @@ C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\obj\Debug\net6.0\refint\TiklaYe
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\obj\Debug\net6.0\TiklaYe.pdb
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\obj\Debug\net6.0\TiklaYe.genruntimeconfig.cache
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\obj\Debug\net6.0\ref\TiklaYe.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.CodeAnalysis.Razor.dll

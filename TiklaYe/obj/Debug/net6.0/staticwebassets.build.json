@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pZARzEnT5tJzG0YiYUtABd7yBRurd9qUeu9rF+CCEbk=",
+  "Hash": "t7Z0ektFsi4QblFV3SRj0xozf6dn9Ih2Z1WWKHKK0Nw=",
   "Source": "TiklaYe",
   "BasePath": "_content/TiklaYe",
   "Mode": "Default",
@@ -55,6 +55,25 @@
       "OriginalItemSpec": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\TiklaYe.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\account.css",
+      "SourceId": "TiklaYe",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\",
+      "BasePath": "_content/TiklaYe",
+      "RelativePath": "css/account.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\account.css"
+    },
+    {
       "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\admin.css",
       "SourceId": "TiklaYe",
       "SourceType": "Discovered",
@@ -91,25 +110,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.css"
-    },
-    {
-      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\site.css",
-      "SourceId": "TiklaYe",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\",
-      "BasePath": "_content/TiklaYe",
-      "RelativePath": "css/site.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
       "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\css\\style.css",
@@ -186,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\bg2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg-register.jpg",
+      "SourceId": "TiklaYe",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\",
+      "BasePath": "_content/TiklaYe",
+      "RelativePath": "images/bg-register.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bg-register.jpg"
     },
     {
       "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\f1.png",

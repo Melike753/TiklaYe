@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TiklaYe.Models;
 
 namespace TiklaYe.Data
@@ -23,10 +23,24 @@ namespace TiklaYe.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Category için CreatedDate özelliğinin datetime2 olarak tanımlanması
-            modelBuilder.Entity<Category>()
-                .Property(c => c.CreatedDate)
-                .HasColumnType("datetime2");
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.Property(p => p.Price)
+                    .HasColumnType("decimal(18, 2)");
+
+                entity.Property(p => p.CreatedDate)
+                    .HasColumnType("datetime2");
+
+                // Diğer ayarlamalar...
+            });
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.Property(c => c.CreatedDate)
+                    .HasColumnType("datetime2");
+
+                // Diğer ayarlamalar...
+            });
         }
     }
 }

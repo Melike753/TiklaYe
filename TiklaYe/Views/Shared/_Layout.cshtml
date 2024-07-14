@@ -11,10 +11,9 @@
     <link rel="shortcut icon" href="/images/logo1.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
- 
+
 <body>
     <div class="hero_area">
         <div class="bg-box">
@@ -25,7 +24,7 @@
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                         <span>
                             <i class="fas fa-hand-pointer"></i>
                             TıklaYe
@@ -61,9 +60,7 @@
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </button>
                             </form>
-                            <a href="" class="order_online">
-                                Giriş Yap
-                            </a>
+                            <a asp-controller="Account" asp-action="Register" class="order_online">Kayıt Ol</a>
                         </div>
                     </div>
                 </nav>
@@ -175,5 +172,12 @@
     </footer>
     <!-- footer section -->
     <script src="/js/site.js"></script>
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery Validate -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <!-- jQuery Validate Unobtrusive -->
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
 </body>
 </html>

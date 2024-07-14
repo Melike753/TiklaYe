@@ -159,14 +159,9 @@
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="ImageUrlFile">Görsel</label>
-                                                <input type="file" asp-for="ImageUrlFile" class="form-control" />
+                                                <input type="file" id="ImageUrlFile" name="ImageUrlFile" class="form-control" />
                                                 <span asp-validation-for="ImageUrlFile" class="text-danger"></span>
-                                                @if (Model.ImageUrl != null)
-                                                {
-                                                    <div class="mt-2">
-                                                        <img src="@Model.ImageUrl" alt="Mevcut Görsel" class="img-thumbnail" style="width: 80px;" />
-                                                    </div>
-                                                }
+                                                <img id="imagePreview" src="@Model.ImageUrl" alt="Image Preview" style="max-width: 80px; margin-top: 10px; @(string.IsNullOrEmpty(Model.ImageUrl) ? "display:none;" : "display:block;")" />
                                             </div>
                                             <div class="form-check">
                                                 <input asp-for="IsActive" class="form-check-input" checked="@(Model.IsActive)" />
@@ -185,3 +180,19 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('ImageUrlFile').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}
