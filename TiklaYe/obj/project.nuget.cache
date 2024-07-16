@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xXKmXKPAj8IXH2FYsD5c8yXiTR5aeaXHbKOqfqvjlOHThAy0m4AQn9Q1O870qr4ufcHWZ38VFE+qbEQU42jVEw==",
+  "dgSpecHash": "1a6ja+MSsqnEHYzuUSOqfQbFoLSbmdHQ1Q/58tiKCYYdkBtzHNsajZOM9XSyiG0QVY9t2aBGEgAn7RrBnaykjw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\TiklaYe.csproj",
   "expectedPackageFiles": [
@@ -134,6 +134,7 @@
     "C:\\Users\\Melike\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Melike\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\Melike\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
+    "C:\\Users\\Melike\\.nuget\\packages\\system.linq.queryable\\4.3.0\\system.linq.queryable.4.3.0.nupkg.sha512",
     "C:\\Users\\Melike\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
     "C:\\Users\\Melike\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Melike\\.nuget\\packages\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",

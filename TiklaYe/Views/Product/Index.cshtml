@@ -133,6 +133,19 @@
     </style>
 }
 
+@{
+    if (!ViewData.ModelState.IsValid)
+    {
+        foreach (var state in ViewData.ModelState)
+        {
+            foreach (var error in state.Value.Errors)
+            {
+                <div class="text-danger">@error.ErrorMessage</div>
+            }
+        }
+    }
+}
+
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -149,7 +162,6 @@
                             <th>Fiyat</th>
                             <th>Stok</th>
                             <th>Görsel</th>
-                            <th>Kategori</th>
                             <th>Durum</th>
                             <th>İşlemler</th>
                         </tr>
@@ -169,10 +181,9 @@
                                     }
                                     else
                                     {
-                                        <span>Belirtilmemiş</span>
+                                        <span>Yok</span>
                                     }
                                 </td>
-                                <td>@(product.Category != null ? product.Category.Name : "Belirtilmemiş")</td>
                                 <td>@(product.IsActive ? "Aktif" : "Pasif")</td>
                                 <td>
                                     <a href="@Url.Action("Edit", new { id = product.ProductId })" class="btn btn-primary btn-sm">Düzenle</a>
@@ -187,9 +198,10 @@
     </div>
 </div>
 
+
 @section Scripts {
     <script type="text/javascript">
-        document.getElementById('CategoryImage').addEventListener('change', function () {
+        document.getElementById('ProductImage').addEventListener('change', function () {
             var file = this.files[0];
             if (file) {
                 var reader = new FileReader();

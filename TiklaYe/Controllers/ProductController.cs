@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TiklaYe.Data;
 using TiklaYe.Models;
+using System.IO;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace TiklaYe.Controllers
 {
@@ -24,70 +25,52 @@ namespace TiklaYe.Controllers
             return View(products);
         }
 
-
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
-            var product = new Product
-            {
-                IsActive = true // Varsayılan olarak aktif olarak ayarla
-            };
+            var product = new Product();
+            product.IsActive = true;
             return View(product);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product, IFormFile imageFile)
         {
-            if (ModelState.IsValid)
-            {
-                if (product.ImageUrlFile != null && product.ImageUrlFile.Length > 0)
-                {
-                    try
-                    {
-                        var fileName = Path.GetFileName(product.ImageUrlFile.FileName);
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
-
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await product.ImageUrlFile.CopyToAsync(stream);
-                        }
-                        product.ImageUrl = "/images/" + fileName;
-                    }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError("", "Dosya yüklenirken bir hata oluştu: " + ex.Message);
-                        ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", product.CategoryId);
-                        return View(product);
-                    }
-                }
-
-                try
-                {
-                    _context.Products.Add(product);
-                    await _context.SaveChangesAsync();
-                    return Json(new { success = true, message = "Ürün başarıyla eklendi." });
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "Veritabanına kaydederken bir hata oluştu: " + ex.Message);
-                    return Json(new { success = false, errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
-                }
-
-
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
                 foreach (var error in errors)
                 {
                     Console.WriteLine(error.ErrorMessage);
                 }
+                return View(product);
             }
 
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", product.CategoryId);
-            return View(product);
+            try
+            {
+                if (product.imageFile != null && product.imageFile.Length > 0)
+                {
+                    var fileName = Path.GetFileName(product.imageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await product.imageFile.CopyToAsync(stream);
+                    }
+
+                    product.ImageUrl = "/images/" + fileName; // Görsel yolunu kaydet
+                }
+
+                _context.Add(product);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message); // Hatanın ayrıntılarını konsola yazdır
+                ModelState.AddModelError("", "An error occurred while saving the product.");
+                return View(product); // Hata durumunda kullanıcıya geri dön
+            }
         }
 
 
@@ -95,6 +78,7 @@ namespace TiklaYe.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -108,6 +92,7 @@ namespace TiklaYe.Controllers
             return View(product);
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Product product)
@@ -116,53 +101,56 @@ namespace TiklaYe.Controllers
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
                 {
-                    var existingProduct = await _context.Products.FindAsync(id);
-                    if (existingProduct == null)
-                    {
-                        return NotFound();
-                    }
-
-                    if (product.ImageUrlFile != null && product.ImageUrlFile.Length > 0)
-                    {
-                        var fileName = Path.GetFileName(product.ImageUrlFile.FileName);
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
-
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await product.ImageUrlFile.CopyToAsync(stream);
-                        }
-
-                        existingProduct.ImageUrl = "/images/" + fileName; // Görsel yolunu güncelle
-                    }
-
-                    existingProduct.Name = product.Name;
-                    existingProduct.IsActive = product.IsActive;
-
-                    _context.Update(existingProduct);
-                    await _context.SaveChangesAsync();
+                    Console.WriteLine(error.ErrorMessage);
                 }
-                catch (DbUpdateConcurrencyException)
+                return View(product);
+            }
+
+            try
+            {
+                var existingProduct = await _context.Products.FindAsync(id);
+                if (existingProduct == null)
                 {
-                    if (!ProductExists(product.ProductId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    return NotFound();
                 }
+
+                if (product.imageFile != null && product.imageFile.Length > 0)
+                {
+                    // Dosyayı sunucuya kaydetmek için gerekli işlemler
+                    var fileName = Path.GetFileName(product.imageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await product.imageFile.CopyToAsync(stream);
+                    }
+
+                    existingProduct.ImageUrl = "/images/" + fileName; // Görsel yolunu kaydet
+                }
+
+                existingProduct.Name = product.Name;
+                existingProduct.Description = product.Description;
+                existingProduct.Price = product.Price;
+                existingProduct.Quantity = product.Quantity;
+                existingProduct.IsActive = product.IsActive;
+
+
+                _context.Update(existingProduct);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message); // Hatanın ayrıntılarını konsola yazdır
+                ModelState.AddModelError("", "An error occurred while saving the product.");
+                return View(product); // Hata durumunda kullanıcıya geri dön
+            }
         }
-
-
 
 
         private bool ProductExists(int id)
@@ -184,11 +172,19 @@ namespace TiklaYe.Controllers
                 return NotFound();
             }
 
-            // Kategori aktiflik durumunu "Pasif" olarak ayarla
-            product.IsActive = false;
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                // Ürün aktiflik durumunu "Pasif" olarak ayarla
+                product.IsActive = false;
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message); // Hatanın ayrıntılarını konsola yazdır
+                ModelState.AddModelError("", "An error occurred while deleting the product.");
+                return View(product); // Hata durumunda kullanıcıya geri dön
+            }
         }
 
         [HttpPost, ActionName("Delete")]
@@ -198,13 +194,24 @@ namespace TiklaYe.Controllers
             var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
-                product.IsActive = false;
-                await _context.SaveChangesAsync();
+                try
+                {
+                    product.IsActive = false;
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); // Hatanın ayrıntılarını konsola yazdır
+                    ModelState.AddModelError("", "An error occurred while deleting the product.");
+                    return View(product); // Hata durumunda kullanıcıya geri dön
+                }
             }
             return RedirectToAction(nameof(Index));
         }
 
 
+        // Dispose of the DbContext
         protected override void Dispose(bool disposing)
         {
             if (disposing)

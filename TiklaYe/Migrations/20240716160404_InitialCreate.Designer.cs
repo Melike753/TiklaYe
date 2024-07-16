@@ -12,8 +12,8 @@ using TiklaYe.Data;
 namespace TiklaYe.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240714202235_Deneme")]
-    partial class Deneme
+    [Migration("20240716160404_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -183,9 +183,6 @@ namespace TiklaYe.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -199,7 +196,6 @@ namespace TiklaYe.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
@@ -209,8 +205,6 @@ namespace TiklaYe.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ProductId");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -309,17 +303,6 @@ namespace TiklaYe.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("TiklaYe.Models.Product", b =>
-                {
-                    b.HasOne("TiklaYe.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

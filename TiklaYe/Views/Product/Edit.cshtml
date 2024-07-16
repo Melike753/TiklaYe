@@ -161,89 +161,83 @@
     </style>
 }
 
-<div class="container">
-    <div class="row">
-        <div class="card">
-            <div class="card-header">
-                <h4>Ürün Güncelleme Sayfası</h4>
-                <a class="btn btn-primary float-right" asp-action="Index">Geri</a>
-            </div>
-            <div class="card-block">
-                <div class="row">
-                    <form asp-action="Edit" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label asp-for="Name" class="control-label">Ürün Adı</label>
-                            <input asp-for="Name" class="form-control" required />
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
+@{
+    if (!ViewData.ModelState.IsValid)
+    {
+        foreach (var state in ViewData.ModelState)
+        {
+            foreach (var error in state.Value.Errors)
+            {
+                <div class="text-danger">@error.ErrorMessage</div>
+            }
+        }
+    }
+}
 
-                        <div class="form-group">
-                            <label asp-for="Description" class="control-label">Ürün Açıklaması</label>
-                            <input asp-for="Description" class="form-control" />
-                            <span asp-validation-for="Description" class="text-danger"></span>
+
+<div class="container">
+    <div class="pcoded-inner-content pt-0">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Ürün Güncelleme Sayfası</h4>
+                                <a class="btn btn-primary float-right" asp-action="Index">Geri</a>
+                            </div>
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-4 col-lg-4">
+                                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label asp-for="Name" class="control-label">Ürün Adı</label>
+                                                <input asp-for="Name" class="form-control" />
+                                                <span asp-validation-for="Name" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label asp-for="Description" class="control-label">Ürün Açıklaması</label>
+                                                <input asp-for="Description" class="form-control" />
+                                                <span asp-validation-for="Description" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Price" class="control-label">Ürün Fiyatı</label>
+                                                <input asp-for="Price" class="form-control" />
+                                                <span asp-validation-for="Price" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Quantity" class="control-label">Stok</label>
+                                                <input asp-for="Quantity" class="form-control" />
+                                                <span asp-validation-for="Quantity" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="imageFile">Görsel</label>
+                                                <input type="file" id="imageFile" name="imageFile" class="form-control" />
+                                                <span asp-validation-for="imageFile" class="text-danger"></span>
+                                                <img id="imagePreview" src="@Model.ImageUrl" alt="Image Preview" style="max-width: 80px; margin-top: 10px; @(string.IsNullOrEmpty(Model.ImageUrl) ? "display:none;" : "display:block;")" />
+                                            </div>
+                                            <div class="form-check">
+                                                <input asp-for="IsActive" class="form-check-input" checked="@(Model.IsActive)" />
+                                                <label asp-for="IsActive" class="form-check-label">Aktif</label>
+                                            </div>
+                                            <input type="hidden" asp-for="ProductId" />
+                                            <button type="submit" class="btn btn-primary mt-3">Güncelle</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Price" class="control-label">Ürün Fiyatı</label>
-                            <input asp-for="Price" class="form-control" required />
-                            <span asp-validation-for="Price" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Quantity" class="control-label">Stok</label>
-                            <input asp-for="Quantity" class="form-control" required />
-                            <span asp-validation-for="Quantity" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="ImageUrlFile" class="control-label">Görsel</label>
-                            <input type="file" id="ImageUrlFile" name="ImageUrlFile" class="form-control" />
-                            <span asp-validation-for="ImageUrlFile" class="text-danger"></span>
-                            <img id="imagePreview" src="@Model.ImageUrl" alt="Image Preview" style="max-width: 80px; margin-top: 10px; @(string.IsNullOrEmpty(Model.ImageUrl) ? "display:none;" : "display:block;")" />
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="CategoryId" class="control-label">Kategori Adı</label>
-                            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                            <span asp-validation-for="CategoryId" class="text-danger"></span>
-                        </div>
-                        <div class="form-check">
-                            <input asp-for="IsActive" class="form-check-input" checked="@(Model.IsActive)" />
-                            <label asp-for="IsActive" class="form-check-label">Aktif</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-3">Güncelle</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
 @section Scripts {
     <script type="text/javascript">
-        document.querySelector('form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Sayfanın yenilenmesini engeller
-
-            // Form verilerini almak için FormData kullanımı
-            var formData = new FormData(this);
-
-            // AJAX isteği gönderme
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json()) // Yanıtı JSON olarak al
-                .then(data => {
-                    // Başarılı işlem durumunda yapılacaklar
-                    console.log('İşlem başarılı:', data);
-                    // İsteğe bağlı olarak başka işlemler yapılabilir (örneğin, sayfa yenileme)
-                })
-                .catch(error => {
-                    // Hata durumunda yapılacaklar
-                    console.error('Hata:', error);
-
-                });
-        });
-
-        // Görsel önizleme için gereken kod
-        document.getElementById('ImageUrlFile').addEventListener('change', function () {
+        document.getElementById('imageFile').addEventListener('change', function () {
             var file = this.files[0];
             if (file) {
                 var reader = new FileReader();
