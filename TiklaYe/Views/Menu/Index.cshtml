@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<TiklaYe.Models.Product>
+
+@{
     ViewData["Title"] = "Menü";
     Layout = "_Layout";
 }
@@ -23,245 +25,44 @@
 
         <div class="filters-content">
             <div class="row grid">
-                <div class="col-sm-6 col-lg-4 all pizza">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f1.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Karışık Pizza
-                                </h5>
-                                <p>
-                                    Çeşit çeşit malzemelerin lezzetli uyumu ile damaklarınızda unutulmaz bir tat bırakacak. <br>
-                                    Karışık Pizza, farklı lezzetleri bir arada deneyimlemek isteyenler için idealdir. <br>Bol malzemesi ve doyurucu içeriği ile hem gözünüze hem de midenize hitap eder.
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        200₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-sm-6 col-lg-4 all">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="@product.ImageUrl" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5>
+                                            @product.Name
+                                        </h5>
+                                        <p>
+                                            @product.Description
+                                        </p>
+                                        <div class="options">
+                                            <h6>
+                                                @product.Price ₺
+                                            </h6>
+                                            <a href="">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all burger">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f2.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Bol Malzemeli Burger
-                                </h5>
-                                <p>
-                                    Lezzetin doruklarına çıkmanızı sağlayacak bol malzemeli hamburger ile doyurucu bir lezzet yolculuğuna çıkın. <br>
-                                    Bol Malzemeli Hamburger, kaliteli malzemelerle hazırlanmış, doyurucu ve lezzetli bir seçenektir.
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        175₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all pizza">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f3.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Vegan Pizza
-                                </h5>
-                                <p>
-                                    Sağlıklı ve lezzetli bir seçenek arayanlar için özel olarak hazırlanmış vegan pizza ile lezzet dolu bir deneyim yaşayın. <br>
-                                    Vegan Pizza, sadece bitkisel ve doğal malzemeler kullanılarak hazırlanmış, sağlıklı ve besleyici bir seçenektir.
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        170₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all pasta">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f4.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Sebzeli Makarna
-                                </h5>
-                                <p>
-                                    Lezzetin doruklarına çıkmanızı sağlayacak sebzeli makarna ile doyurucu bir lezzet yolculuğuna çıkın. <br>
-                                    Sebzeli Makarna, sağlıklı ve lezzetli bir seçenektir. Bu yemekte, çeşitli sebzelerle zenginleştirilmiş taze makarna kullanılmıştır.
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        150₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all fries">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f5.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Patates Kızartması
-                                </h5>
-                                <p>
-                                    İnce dilimler halinde kesilmiş taptaze patatesler, altın rengi bir kızarıklıkla sunulur. <br>
-                                    Her ısırıkta çıtır çıtır dış kabuğunun ardında yumuşacık bir iç sunar. <br>En sevilen atıştırmalıklardan biri, her zaman taze ve lezzetli.
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        90₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all pizza">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f6.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Deniz Mahsullü Pizza
-                                </h5>
-                                <p>
-                                    İnce, gevrek hamuru ve taptaze deniz mahsulleri ile hazırlanmış deniz ürünleri sevenler için mükemmel bir seçimdir.<br>
-                                    Üzerinde zengin ve lezzetli malzemeler ile dolu pizza, damak tadınıza hitap edecek şekilde özenle hazırlanmıştır.
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        250₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all burger">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f7.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Tavuklu Barbekü Deluxe Burger
-                                </h5>
-                                <p>
-                                    Taptaze tavuk göğsü, yoğun barbekü sos ve çıtır kırmızı soğan halkaları ile zenginleştirilmiş, lezzet dolu bir burger deneyimi sunar. <br>
-                                    Barbekü tutkunları için vazgeçilmez bir seçenek, her ısırıkta lezzet patlaması yaşatır.
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        130₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all burger">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f8.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Hamburger
-                                </h5>
-                                <p>
-                                    Lezzetin doruklarına çıkmanızı sağlayarak, lezzet dolu bir burger deneyimi sunar. <br>
-                                    Kaliteli malzemelerle hazırlanmış, doyurucu ve lezzetli bir seçenektir. <br>
-                                    Her ısırıkta lezzet patlaması yaşatır.<br>
-                                    Kesinlikle denemelisiniz!
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        100₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 all pasta">
-                    <div class="box">
-                        <div>
-                            <div class="img-box">
-                                <img src="/images/f9.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Soslu Makarna
-                                </h5>
-                                <p>
-                                    Hafif ve lezzetli bir sosla harmanlanan bu makarna, damaklarda iz bırakan bir lezzet sunar. <br>
-                                    Her bir ısırıkta tazelik ve doygun tatlar hissedilir.<br>
-                                    Kesinlikle denemelisiniz!
-                                </p>
-                                <div class="options">
-                                    <h6>
-                                        130₺
-                                    </h6>
-                                    <a href="">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
+                else
+                {
+                    <p>Ürün bulunamadı.</p>
+                }
             </div>
         </div>
+
         <div class="btn-box">
             <a href="">
                 Daha Fazla Göster

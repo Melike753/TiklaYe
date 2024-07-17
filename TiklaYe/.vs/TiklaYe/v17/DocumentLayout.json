@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ADDCC3C6-3FC5-4115-9CE3-36592E48E868}|TiklaYe.csproj|c:\\users\\melike\\documents\\github\\tiklaye\\tiklaye\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADDCC3C6-3FC5-4115-9CE3-36592E48E868}|TiklaYe.csproj|solutionrelative:controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADDCC3C6-3FC5-4115-9CE3-36592E48E868}|TiklaYe.csproj|c:\\users\\melike\\documents\\github\\tiklaye\\tiklaye\\views\\menu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ADDCC3C6-3FC5-4115-9CE3-36592E48E868}|TiklaYe.csproj|solutionrelative:views\\menu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MenuController.cs",
+              "DocumentMoniker": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\Controllers\\MenuController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MenuController.cs",
+              "ToolTip": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\Controllers\\MenuController.cs",
+              "RelativeToolTip": "Controllers\\MenuController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T21:09:33.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\Views\\Menu\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Menu\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\Views\\Menu\\Index.cshtml",
+              "RelativeToolTip": "Views\\Menu\\Index.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABcAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-17T20:46:09.931Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
