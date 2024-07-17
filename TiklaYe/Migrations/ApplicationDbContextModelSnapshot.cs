@@ -207,6 +207,34 @@ namespace TiklaYe.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("TiklaYe.Models.Purchase", b =>
+                {
+                    b.Property<int>("PurchaseId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PurchaseId"), 1L, 1);
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PurchaseId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Purchases");
+                });
+
             modelBuilder.Entity("TiklaYe.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -299,6 +327,17 @@ namespace TiklaYe.Migrations
                     b.Navigation("Payment");
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TiklaYe.Models.Purchase", b =>
+                {
+                    b.HasOne("TiklaYe.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

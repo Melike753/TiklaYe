@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TiklaYe.Models.Purchase>
+
+@{
+    Layout = null; // Bu sayfada layout kullanmayacağım
+}
+
+<h2>Satın Alma Geçmişi</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ürün</th>
+            <th>Fiyat</th>
+            <th>Tarih</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var purchase in Model)
+        {
+            <tr>
+                <td>@purchase.ProductName</td>
+                <td>@purchase.Price</td>
+                <td>@purchase.PurchaseDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

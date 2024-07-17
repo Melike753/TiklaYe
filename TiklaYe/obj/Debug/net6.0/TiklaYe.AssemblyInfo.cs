@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TiklaYe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5247c2bfac2a593b7f8b6dcb90e14d870916845a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b09065fe74a0034a076007ccbe968027a72efe7")]
 [assembly: System.Reflection.AssemblyProductAttribute("TiklaYe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TiklaYe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "t7Z0ektFsi4QblFV3SRj0xozf6dn9Ih2Z1WWKHKK0Nw=",
+  "Hash": "wKWGt3kXlbeOVboQzxrtRXBTHYRrCGOBhq066U8pTag=",
   "Source": "TiklaYe",
   "BasePath": "_content/TiklaYe",
   "Mode": "Default",
@@ -186,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\bg2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg-profile.jpg",
+      "SourceId": "TiklaYe",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\",
+      "BasePath": "_content/TiklaYe",
+      "RelativePath": "images/bg-profile.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bg-profile.jpg"
     },
     {
       "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg-register.jpg",
