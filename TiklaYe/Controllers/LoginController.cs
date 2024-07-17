@@ -54,7 +54,16 @@ namespace TiklaYe.Controllers
 
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
-                        return RedirectToAction("Index", "Home");
+                        if ((user.Username == "Admin" ||  user.Email == "admintiklaye@gmail.com") && user.Password == "d3068a2b95ff12d7a149f5c9db46f727939d507d2ce1c20f2fbc52ec202d5b9f")
+                        {
+                            // Admin sayfasına yönlendir
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        else
+                        {
+                            // Normal kullanıcıyı uygulamanın ana sayfasına yönlendir
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
@@ -68,15 +77,6 @@ namespace TiklaYe.Controllers
             }
 
             return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Logout()
-        {
-            // Kullanıcı çıkış işlemleri
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
         }
 
         // Kullanıcının girdiği şifreyi hashleyip, veritabanında saklanan hashlenmiş şifre ile karşılaştırır.
