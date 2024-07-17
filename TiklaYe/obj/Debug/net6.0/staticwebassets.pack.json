@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\images\\about.png"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg-cart.jpg",
+      "PackagePath": "staticwebassets\\images\\bg-cart.jpg"
+    },
+    {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg-profile.jpg",
       "PackagePath": "staticwebassets\\images\\bg-profile.jpg"
     },

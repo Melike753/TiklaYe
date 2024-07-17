@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wKWGt3kXlbeOVboQzxrtRXBTHYRrCGOBhq066U8pTag=",
+  "Hash": "yYOQoUiLb3NSrkPwuTGLJ9jfDi68KfL3puSIThs2RDc=",
   "Source": "TiklaYe",
   "BasePath": "_content/TiklaYe",
   "Mode": "Default",
@@ -186,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\bg2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg-cart.jpg",
+      "SourceId": "TiklaYe",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\",
+      "BasePath": "_content/TiklaYe",
+      "RelativePath": "images/bg-cart.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bg-cart.jpg"
     },
     {
       "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\bg-profile.jpg",

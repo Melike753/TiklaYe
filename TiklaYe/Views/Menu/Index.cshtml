@@ -46,7 +46,7 @@
                                             <h6>
                                                 @product.Price ₺
                                             </h6>
-                                            <a href="">
+                                            <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@product.ProductId">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </a>
                                         </div>
