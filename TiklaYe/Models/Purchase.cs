@@ -10,6 +10,6 @@
         public decimal UnitPrice { get; set; }
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
-        public string Status { get; set; } // Hazırlanıyor, Yolda, Teslim Edildi
+        public string Status { get; set; } = "Sipariş Hazırlanıyor"; // Varsayılan değer
     }
 }

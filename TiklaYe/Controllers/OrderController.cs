@@ -44,13 +44,15 @@ namespace TiklaYe.Controllers
             }
 
             var cartItems = _cartService.GetCartItems();
+            var orderNumber = Guid.NewGuid().ToString(); // Tek sipariş numarası oluştur
+
             foreach (var item in cartItems)
             {
                 var purchase = new Purchase
                 {
                     UserId = user.UserId,
                     PurchaseDate = DateTime.Now,
-                    OrderNumber = Guid.NewGuid().ToString(),
+                    OrderNumber = orderNumber,
                     ProductName = item.Name,
                     UnitPrice = item.Price,
                     Quantity = item.Quantity,

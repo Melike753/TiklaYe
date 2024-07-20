@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ADDCC3C6-3FC5-4115-9CE3-36592E48E868}|TiklaYe.csproj|c:\\users\\melike\\documents\\github\\tiklaye\\tiklaye\\controllers\\purchasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ADDCC3C6-3FC5-4115-9CE3-36592E48E868}|TiklaYe.csproj|solutionrelative:controllers\\purchasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ADDCC3C6-3FC5-4115-9CE3-36592E48E868}|TiklaYe.csproj|c:\\users\\melike\\documents\\github\\tiklaye\\tiklaye\\controllers\\statuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADDCC3C6-3FC5-4115-9CE3-36592E48E868}|TiklaYe.csproj|solutionrelative:controllers\\statuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PurchaseController.cs",
-              "DocumentMoniker": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\Controllers\\PurchaseController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PurchaseController.cs",
-              "ToolTip": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\Controllers\\PurchaseController.cs",
-              "RelativeToolTip": "Controllers\\PurchaseController.cs",
-              "ViewState": "AQIAAJ8AAAAAAAAAAAAAAEAAAAAAAAAA",
+              "Title": "StatusController.cs",
+              "DocumentMoniker": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\Controllers\\StatusController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StatusController.cs",
+              "ToolTip": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\Controllers\\StatusController.cs",
+              "RelativeToolTip": "Controllers\\StatusController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T00:50:32.735Z",
+              "WhenOpened": "2024-07-20T17:41:14.964Z",
               "EditorCaption": ""
             }
           ]
