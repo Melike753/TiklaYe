@@ -2,6 +2,8 @@
 {
     public class CartItem
     {
+        public int CartItemId { get; set; }
+        public int UserId { get; set; } 
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }

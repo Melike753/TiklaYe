@@ -153,3 +153,17 @@ C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.AspN
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.barcodes.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.bouncy-castle-connector.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.forms.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.io.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.kernel.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.layout.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.pdfa.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.pdfua.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.sign.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.styledxmlparser.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.svg.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itext.commons.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe\bin\Debug\net6.0\itextsharp.dll

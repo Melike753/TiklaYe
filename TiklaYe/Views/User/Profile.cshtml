@@ -126,7 +126,7 @@
             <div class="profile-card">
                 <div>
                     <a asp-controller="User" asp-action="Profile" class="btn btn-secondary">Kullanıcı Bilgileri</a>
-                    <a asp-action="PurchaseHistory" class="btn btn-secondary">Satın Alma Geçmişi</a>
+                    <a asp-controller="Purchase" asp-action="Index" class="btn btn-secondary">Satın Alma Geçmişi</a>
                 </div>
                 <form id="profileForm" asp-controller="User" asp-action="UpdateProfile" method="post">
                     <div class="auth-box">

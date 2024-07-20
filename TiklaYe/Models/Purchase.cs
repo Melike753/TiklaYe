@@ -1,13 +1,15 @@
-﻿namespace TiklaYe.Models
+﻿ namespace TiklaYe.Models
 {
     public class Purchase
     {
         public int PurchaseId { get; set; }
         public int UserId { get; set; }
-        public string ProductName { get; set; }
-        public decimal Price { get; set; }
         public DateTime PurchaseDate { get; set; }
-
-        public User User { get; set; }
+        public string OrderNumber { get; set; }
+        public string ProductName { get; set; }
+        public decimal UnitPrice { get; set; }
+        public int Quantity { get; set; }
+        public decimal TotalPrice { get; set; }
+        public string Status { get; set; } // Hazırlanıyor, Yolda, Teslim Edildi
     }
 }

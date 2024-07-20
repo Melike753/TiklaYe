@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Linq;
 
 namespace TiklaYe.Models
 {
@@ -18,6 +19,15 @@ namespace TiklaYe.Models
         public CartService(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
+        }
+
+        private string GetCartSessionKey()
+        {
+            var userId = _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated
+                ? _httpContextAccessor.HttpContext.User.Identity.Name
+                : "guest"; // Oturum açmamış kullanıcılar için
+
+            return $"{CartSessionKey}_{userId}";
         }
 
         public void AddToCart(CartItem item)
@@ -52,7 +62,7 @@ namespace TiklaYe.Models
 
         public List<CartItem> GetCartItems()
         {
-            return _httpContextAccessor.HttpContext.Session.GetObject<List<CartItem>>(CartSessionKey) ?? new List<CartItem>();
+            return _httpContextAccessor.HttpContext.Session.GetObject<List<CartItem>>(GetCartSessionKey()) ?? new List<CartItem>();
         }
 
         public void ClearCart()
@@ -62,8 +72,7 @@ namespace TiklaYe.Models
 
         private void SaveCart(List<CartItem> cart)
         {
-            _httpContextAccessor.HttpContext.Session.SetObject(CartSessionKey, cart);
+            _httpContextAccessor.HttpContext.Session.SetObject(GetCartSessionKey(), cart);
         }
     }
-
 }

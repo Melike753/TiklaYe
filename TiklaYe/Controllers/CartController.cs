@@ -47,5 +47,11 @@ namespace TiklaYe.Controllers
             _cartService.RemoveFromCart(productId);
             return RedirectToAction("Index");
         }
+
+        public IActionResult ClearCartAndRedirect()
+        {
+            _cartService.ClearCart();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
