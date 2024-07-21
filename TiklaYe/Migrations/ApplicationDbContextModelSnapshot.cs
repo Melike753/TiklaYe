@@ -279,6 +279,8 @@ namespace TiklaYe.Migrations
 
                     b.HasKey("PurchaseId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Purchases");
                 });
 
@@ -374,6 +376,17 @@ namespace TiklaYe.Migrations
                     b.Navigation("Payment");
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TiklaYe.Models.Purchase", b =>
+                {
+                    b.HasOne("TiklaYe.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

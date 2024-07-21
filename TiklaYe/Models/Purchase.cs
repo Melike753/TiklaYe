@@ -11,5 +11,7 @@
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
         public string Status { get; set; } = "Sipariş Hazırlanıyor"; // Varsayılan değer
+
+        public User User { get; set; }
     }
 }
