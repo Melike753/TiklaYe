@@ -129,7 +129,7 @@
                                 </td>
                                 <td>
                                     <form method="post" action="@Url.Action("UpdateStatus", "Status")">
-                                        <input type="hidden" name="orderNumber" value="@purchase.OrderNumber" />                                        
+                                        <input type="hidden" name="orderNumber" value="@purchase.OrderNumber" />
                                         <select name="status" class="form-control">
                                             <option value="Sipariş Hazırlanıyor" selected="@(purchase.Status == "Sipariş Hazırlanıyor")">Sipariş Hazırlanıyor</option>
                                             <option value="Yolda" selected="@(purchase.Status == "Yolda")">Sipariş Yolda</option>

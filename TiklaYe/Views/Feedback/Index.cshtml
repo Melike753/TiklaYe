@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<TiklaYe.Models.Feedback>
+
+@{
     ViewData["Title"] = "Geri Bildirim";
     Layout = "_Layout";
 }
@@ -10,31 +12,29 @@
             <h2 class="contact-title">Geri Bildirim</h2>
         </div>
         <div class="col-lg-8">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["Success"]
+                </div>
+            }
+
             <form class="form-contact contact_form" method="post" id="contactForm" novalidate="novalidate">
+                @Html.AntiForgeryToken()
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mesajınızı yazınız..'" placeholder="Mesajınızı yazınız.."></textarea>
+                            <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" placeholder="Mesajınızı yazınız.." required></textarea>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                   <div class="col-12">
                         <div class="form-group">
-                            <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ad Soyad'" placeholder="Ad Soyad">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konu'" placeholder="Konu">
+                            <input class="form-control" name="subject" id="subject" type="text" placeholder="Konu" required>
                         </div>
                     </div>
                 </div>
                 <div class="form-group mt-3">
-                    <button type="submit">Gönder</button>
+                    <button type="submit" class="btn btn-primary">Gönder</button>
                 </div>
             </form>
         </div>
