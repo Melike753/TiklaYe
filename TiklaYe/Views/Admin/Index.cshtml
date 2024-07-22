@@ -3,122 +3,191 @@
     Layout = "_AdminLayout";
 }
 
+@section Styles {
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+            margin-top: 50px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 350px;
+            height: 250px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-top: 15px;
+            font-size: 30px;
+        }
+
+            .icon-container.blue {
+                background-color: #e0f7fa;
+                color: #0288d1;
+            }
+
+            .icon-container.orange {
+                background-color: #ffe0b2;
+                color: #fb8c00;
+            }
+
+            .icon-container.green {
+                background-color: #c8e6c9;
+                color: #388e3c;
+            }
+
+        .card-content {
+            flex-grow: 1;
+        }
+
+        .card-title {
+            margin: 0;
+            margin-top: 25px;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .card-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #828282;
+            text-decoration: none;
+        }
+
+            .card-link i {
+                margin-right: 5px;
+            }
+
+            .card-link:hover {
+                text-decoration: none;
+                color: #363636;
+            }
+    </style>
+}
+
 <main class="h-full overflow-y-auto">
     <div class="container px-6 mx-auto grid">
-        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        <h2 class="text-gray-700 dark:text-gray-200">
             Anasayfa
         </h2>
         <!-- Cards -->
-        <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+        <div class="cards-container">
             <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+            <div class="card">
+                <div class="icon-container blue">
                     <i class="material-icons">view_list</i>
                 </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Kategoriler
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        8
-                    </p>
+                <div class="card-content">
+                    <p class="card-title">Kategoriler</p>
+                    <a class="card-link" asp-controller="Category" asp-action="Index">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
                 </div>
             </div>
             <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+            <div class="card">
+                <div class="icon-container orange">
                     <i class="material-icons">fastfood</i>
                 </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Ürünler
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        20
-                    </p>
+                <div class="card-content">
+                    <p class="card-title">Ürünler</p>
+                    <a class="card-link" asp-controller="Product" asp-action="Index">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
                 </div>
             </div>
             <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
-                    <i class="material-icons">shopping_cart</i>
-                </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Toplam Siparişler
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        41
-                    </p>
-                </div>
-            </div>
-            <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+            <div class="card">
+                <div class="icon-container green">
                     <i class="material-icons">local_shipping</i>
                 </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Teslim Edilen Siparişler
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        28
-                    </p>
+                <div class="card-content">
+                    <p class="card-title">Ürün Teslimat Durumu</p>
+                    <a class="card-link" asp-controller="Status" asp-action="Index">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
                 </div>
             </div>
             <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                    <i class="material-icons">hourglass_empty</i>
-                </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Bekleyen Siparişler
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        13
-                    </p>
-                </div>
-            </div>
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
-                    <i class="material-icons">people</i>
-                </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Kullanıcılar
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        3333
-                    </p>
-                </div>
-            </div>
-            <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
-                    <i class="material-icons">attach_money</i>
-                </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Kazanç
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        38087.56 ₺
-                    </p>
-                </div>
-            </div>
-            <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+            <div class="card">
+                <div class="icon-container blue">
                     <i class="material-icons">notifications_active</i>
                 </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Geri Bildirim
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        3
-                    </p>
+                <div class="card-content">
+                    <p class="card-title">Geri Bildirimler</p>
+                    <a class="card-link" asp-controller="AdminFeedback" asp-action="Index">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="card">
+                <div class="icon-container orange">
+                    <i class="material-icons">people</i>
+                </div>
+                <div class="card-content">
+                    <p class="card-title">Kullanıcılar</p>
+                    <a class="card-link" asp-controller="User" asp-action="Index">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="card">
+                <div class="icon-container green">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <div class="card-content">
+                    <p class="card-title">Toplam Kazanç</p>
+                    <a class="card-link" asp-controller="Admin" asp-action="SalesReport">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
                 </div>
             </div>
         </div>
