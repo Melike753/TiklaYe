@@ -25,6 +25,12 @@ namespace TiklaYe.Models
 
         public bool IsActive { get; set; }
 
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedDate { get; set; } = DateTime. UtcNow;
+
+        // Navigation Property
+        // lazy loading
+        // left join
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
     }
 }

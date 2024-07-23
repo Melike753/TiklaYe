@@ -171,6 +171,38 @@ namespace TiklaYe.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> CategoryGet(int id)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            var result = new
+            {
+                Id = category.CategoryId,
+                Name = category.Name
+            };
+
+            return Json(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CategoriesGet()
+        {
+            var categories = await _context.Categories.ToListAsync();
+            var result = categories.Select(c => new
+            {
+                Id = c.CategoryId,
+                Name = c.Name
+            }).ToList();
+
+            return Json(result);
+        }
+
+
         // Dispose of the DbContext
         protected override void Dispose(bool disposing)
         {

@@ -218,7 +218,11 @@
                                                 <span asp-validation-for="imageFile" class="text-danger"></span>
                                                 <img id="imagePreview" src="#" alt="Image Preview" style="display:none; max-width: 80px; margin-top: 10px;" />
                                             </div>
-
+                                            <div class="form-group">
+                                                <label asp-for="CategoryId" class="control-label">Kategori</label>
+                                                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                            </div>
                                             <div class="form-check">
                                                 <input asp-for="IsActive" class="form-check-input" checked="@(Model.IsActive)" />
                                                 <label asp-for="IsActive" class="form-check-label">Aktif</label>

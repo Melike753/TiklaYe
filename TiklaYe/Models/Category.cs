@@ -7,7 +7,6 @@ namespace TiklaYe.Models
     {
         [Key]
         public int CategoryId { get; set; }
-        [Required]
         public string? Name { get; set; }
         [NotMapped] // Veritabanına yansıtılmayacak
         public IFormFile? ImageUrlFile { get; set; } // Dosya yükleme için kullanılacak

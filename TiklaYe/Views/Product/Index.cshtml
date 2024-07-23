@@ -162,6 +162,7 @@
                             <th>Fiyat</th>
                             <th>Stok</th>
                             <th>Görsel</th>
+                            <th>Kategori</th>
                             <th>Durum</th>
                             <th>İşlemler</th>
                         </tr>
@@ -184,6 +185,7 @@
                                         <span>Yok</span>
                                     }
                                 </td>
+                                <td>@product.Category?.Name</td> <!-- Kategori Adı -->
                                 <td>@(product.IsActive ? "Aktif" : "Pasif")</td>
                                 <td>
                                     <a href="@Url.Action("Edit", new { id = product.ProductId })" class="btn btn-primary btn-sm">Düzenle</a>

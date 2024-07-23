@@ -21,12 +21,13 @@ namespace TiklaYe.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var products = await _context.Products.ToListAsync();
+            var products = await _context.Products.Include(p => p.Category).ToListAsync();
             return View(products);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewData["CategoryId"] = new SelectList(await _context.Categories.Where(c => c.IsActive).ToListAsync(), "CategoryId", "Name");
             var product = new Product();
             product.IsActive = true;
             return View(product);
@@ -38,24 +39,20 @@ namespace TiklaYe.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                foreach (var error in errors)
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
+                ViewData["CategoryId"] = new SelectList(await _context.Categories.Where(c => c.IsActive).ToListAsync(), "CategoryId", "Name", product.CategoryId);
                 return View(product);
             }
 
             try
             {
-                if (product.imageFile != null && product.imageFile.Length > 0)
+                if (imageFile != null && imageFile.Length > 0)
                 {
-                    var fileName = Path.GetFileName(product.imageFile.FileName);
+                    var fileName = Path.GetFileName(imageFile.FileName);
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await product.imageFile.CopyToAsync(stream);
+                        await imageFile.CopyToAsync(stream);
                     }
 
                     product.ImageUrl = "/images/" + fileName; // Görsel yolunu kaydet
@@ -67,18 +64,17 @@ namespace TiklaYe.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message); // Hatanın ayrıntılarını konsola yazdır
+                Console.WriteLine(ex.Message);
                 ModelState.AddModelError("", "An error occurred while saving the product.");
-                return View(product); // Hata durumunda kullanıcıya geri dön
+                ViewData["CategoryId"] = new SelectList(await _context.Categories.Where(c => c.IsActive).ToListAsync(), "CategoryId", "Name", product.CategoryId);
+                return View(product);
             }
         }
-
 
 
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-
             if (id == null)
             {
                 return NotFound();
@@ -89,25 +85,24 @@ namespace TiklaYe.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["CategoryId"] = new SelectList(await _context.Categories.Where(c => c.IsActive).ToListAsync(), "CategoryId", "Name", product.CategoryId);
             return View(product);
         }
 
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Product product)
+        public async Task<IActionResult> Edit(int id, Product product, IFormFile imageFile)
         {
             if (id != product.ProductId)
             {
                 return NotFound();
             }
+
             if (!ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                foreach (var error in errors)
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
+                ViewData["CategoryId"] = new SelectList(await _context.Categories.Where(c => c.IsActive).ToListAsync(), "CategoryId", "Name", product.CategoryId);
                 return View(product);
             }
 
@@ -119,18 +114,17 @@ namespace TiklaYe.Controllers
                     return NotFound();
                 }
 
-                if (product.imageFile != null && product.imageFile.Length > 0)
+                if (imageFile != null && imageFile.Length > 0)
                 {
-                    // Dosyayı sunucuya kaydetmek için gerekli işlemler
-                    var fileName = Path.GetFileName(product.imageFile.FileName);
+                    var fileName = Path.GetFileName(imageFile.FileName);
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await product.imageFile.CopyToAsync(stream);
+                        await imageFile.CopyToAsync(stream);
                     }
 
-                    existingProduct.ImageUrl = "/images/" + fileName; // Görsel yolunu kaydet
+                    existingProduct.ImageUrl = "/images/" + fileName; // Görsel yolunu güncelle
                 }
 
                 existingProduct.Name = product.Name;
@@ -138,7 +132,7 @@ namespace TiklaYe.Controllers
                 existingProduct.Price = product.Price;
                 existingProduct.Quantity = product.Quantity;
                 existingProduct.IsActive = product.IsActive;
-
+                existingProduct.CategoryId = product.CategoryId;
 
                 _context.Update(existingProduct);
                 await _context.SaveChangesAsync();
@@ -146,9 +140,10 @@ namespace TiklaYe.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message); // Hatanın ayrıntılarını konsola yazdır
+                Console.WriteLine(ex.Message);
                 ModelState.AddModelError("", "An error occurred while saving the product.");
-                return View(product); // Hata durumunda kullanıcıya geri dön
+                ViewData["CategoryId"] = new SelectList(await _context.Categories.Where(c => c.IsActive).ToListAsync(), "CategoryId", "Name", product.CategoryId);
+                return View(product);
             }
         }
 

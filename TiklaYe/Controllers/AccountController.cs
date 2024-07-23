@@ -50,8 +50,8 @@ namespace TiklaYe.Controllers
                 _context.Users.Add(user);
                 _context.SaveChanges();
 
-                // Başarılı kayıt sonrası anasayfaya veya giriş sayfasına yönlendir
-                return RedirectToAction("Index", "Home");
+                // Başarılı kayıt sonrası giriş sayfasına yönlendir
+                return RedirectToAction("Login", "Login");
             }
 
             return View(model);
