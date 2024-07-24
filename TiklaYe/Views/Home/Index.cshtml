@@ -3,6 +3,98 @@
     Layout = "_Layout";
 }
 
+@section Styles
+{
+    <style>
+        /* company section styles */
+        .company_section {
+            background-image: url('/images/restaurant.jpg'); /* Arka plan fotoğrafı yolu */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+        }
+
+            .company_section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+
+        .company_header h2.contact-title,
+        .to_inform h3,
+        .to_inform p.company-to-inform,
+        .btn-company {
+            position: relative; /* İçeriğin z-index'ini artırır */
+            z-index: 2; /* İçeriğin ön planda kalmasını sağlar */
+        }
+
+        .company_header h2.contact-title {
+            font-size: 2.6rem;
+            color: #FFD700;
+            margin-bottom: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .company_contents {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8); /* Daha saydam beyaz arka plan */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .to_inform h3 {
+            font-size: 1.8rem;
+            color: #5b1010;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .to_inform p.company-to-inform {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #a72929;
+            margin-bottom: 30px;
+        }
+
+        .btn-company-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+        }
+
+        .btn-company {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            color: #fff;
+            background-color: #a72929;
+            border: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-company:hover {
+                background-color: #5b1010;
+            }
+    </style>
+}
+
+
 <!-- offer section -->
 <section class="offer_section layout_padding-bottom">
     <div class="offer_container">
@@ -315,6 +407,46 @@
     </div>
 </section>
 <!-- end food section -->
+<!-- company section -->
+<section class="company_section">
+    <div class="container">
+        <div class="company_header">
+            <h2 class="contact-title">Restoran İş Ortağımız Olun!</h2>
+        </div>
+        <div class="company_contents">
+            <form class="form-company contact_form" method="post" id="contactForm" novalidate="novalidate">
+                <div class="row">
+                    <div class="to_inform">
+                        <h3>TıklaYe ile Satışlarınızı Zirveye Taşıyın! </h3>
+                        <p class="company-to-inform">
+                            <strong>Yeni müşterilere ulaşmak ve işletmenizi büyütmek hiç bu kadar kolay olmamıştı!</strong><br /><br />
+                            <em>Hayal edin, sadece semtinizde değil, çevredeki tüm semtlerde de binlerce yeni müşteriye ulaşabiliyorsunuz. Üniversite kampüslerinden iş merkezlerine, plazalardan evlere kadar her yerde hizmetiniz aranan bir marka olabilirsiniz.</em><br /><br />
+                            <strong>Menünüzü listeliyoruz, sipariş bilgilerini anında size ulaştırıyoruz ve işte hepsi bu kadar basit!</strong><br /><br />
+                            Hedef kitleyi genişletin, binlerce potansiyel müşteriye ulaşın.<br />
+                            Siparişleri hızlı ve pratik bir şekilde yönetin.<br />
+                            İster kendiniz teslim edin, ister TıklaYe’nin güvenilir teslimat ağıyla müşterilerinize ulaşın.<br /><br />
+                            <strong>Neden TıklaYe?</strong><br /><br />
+                            <strong>Satış Artışı    ,</strong>
+                            <strong>Güvenilir Ortaklık  ,</strong>
+                            <strong>Marka Bilinirliği</strong><br />
+                            <br />
+                            <strong>Şimdi Harekete Geçin!</strong><br /><br />
+                            <em>TıklaYe ailesine katılarak işletmenizi bir üst seviyeye taşıyın. Binlerce yeni müşteriye ulaşın, satışlarınızı artırın ve işletmenizin potansiyelini tam anlamıyla gerçekleştirin. Hemen şimdi başvurarak bu büyük avantajlardan faydalanmaya başlayın.</em><br /><br />
+                            <strong>Bize Katılın, Başlamak İçin Neyi Bekliyorsun ?</strong>
+                        </p>
+
+                    </div>
+                    <div class="btn-company-container">
+                        <button class="btn-company" type="submit" asp-controller="Business" asp-action="Register">
+                            Başlayalım
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- end company section -->
 <!-- about section -->
 <section class="about_section layout_padding">
     <div class="container  ">
@@ -349,41 +481,3 @@
     </div>
 </section>
 <!-- end about section -->
-<!-- feedback section -->
-<section class="feedback_section layout_padding">
-    <div class="container">
-        <div class="col-12">
-            <h2 class="contact-title">Geri Bildirim</h2>
-        </div>
-        <div class="col-lg-8">
-            <form class="form-contact contact_form" method="post" id="contactForm" novalidate="novalidate">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group">
-                            <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mesajınızı yazınız..'" placeholder="Mesajınızı yazınız.."></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ad Soyad'" placeholder="Ad Soyad">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konu'" placeholder="Konu">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group mt-3">
-                    <button type="submit">Gönder</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
-<!-- end feedback section -->

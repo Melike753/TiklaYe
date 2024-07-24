@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yYOQoUiLb3NSrkPwuTGLJ9jfDi68KfL3puSIThs2RDc=",
+  "Hash": "+ZynTcsIvzOeNu5JXabsyY3hDdB8LJfXslq22ceiQhU=",
   "Source": "TiklaYe",
   "BasePath": "_content/TiklaYe",
   "Mode": "Default",
@@ -471,6 +471,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\o2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\restaurant.jpg",
+      "SourceId": "TiklaYe",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\",
+      "BasePath": "_content/TiklaYe",
+      "RelativePath": "images/restaurant.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\restaurant.jpg"
     },
     {
       "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe\\wwwroot\\images\\tatli.jpg",

@@ -20,6 +20,7 @@ namespace TiklaYe.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<BusinessOwner> BusinessOwners { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
