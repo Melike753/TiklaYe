@@ -24,11 +24,14 @@ namespace TiklaYe.Migrations
 
             modelBuilder.Entity("TiklaYe.Models.BusinessOwner", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BusinessOwnerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BusinessOwnerId"), 1L, 1);
+
+                    b.Property<DateTime?>("ApprovalDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -37,6 +40,11 @@ namespace TiklaYe.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsApproved")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -51,7 +59,7 @@ namespace TiklaYe.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("BusinessOwnerId");
 
                     b.ToTable("BusinessOwners");
                 });
@@ -208,6 +216,51 @@ namespace TiklaYe.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("TiklaYe.Models.PartnerProduct", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
+
+                    b.Property<int?>("BusinessOwnerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId");
+
+                    b.HasIndex("BusinessOwnerId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("PartnerProducts");
                 });
 
             modelBuilder.Entity("TiklaYe.Models.Payment", b =>
@@ -416,6 +469,21 @@ namespace TiklaYe.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TiklaYe.Models.PartnerProduct", b =>
+                {
+                    b.HasOne("TiklaYe.Models.BusinessOwner", "BusinessOwner")
+                        .WithMany()
+                        .HasForeignKey("BusinessOwnerId");
+
+                    b.HasOne("TiklaYe.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("BusinessOwner");
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("TiklaYe.Models.Product", b =>

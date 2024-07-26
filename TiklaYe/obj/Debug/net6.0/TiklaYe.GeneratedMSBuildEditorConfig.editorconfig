@@ -30,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5GZWVkYmFja1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Admin/BusinessRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQnVzaW5lc3NSZXF1ZXN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -92,6 +96,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Order/Payment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/PartnerProduct/AddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lclByb2R1Y3RcQWRkUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/PartnerProduct/EditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lclByb2R1Y3RcRWRpdFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/PartnerProduct/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lclByb2R1Y3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Melike/Documents/GitHub/TiklaYe/TiklaYe/Views/Product/Create.cshtml]

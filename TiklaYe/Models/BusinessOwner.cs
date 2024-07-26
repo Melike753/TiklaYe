@@ -5,7 +5,7 @@ namespace TiklaYe.Models
 {
     public class BusinessOwner
     {
-        public int Id { get; set; }
+        public int BusinessOwnerId { get; set; }
 
         [Required(ErrorMessage = "Ad gereklidir.")]
         public string FirstName { get; set; }
@@ -25,5 +25,8 @@ namespace TiklaYe.Models
         [DataType(DataType.Password)]
         [MaxLength(256)]
         public string Password { get; set; }
+
+        public bool IsApproved { get; set; } // Admin onayı için
+        public DateTime? ApprovalDate { get; set; } // Onay tarihi
     }
 }

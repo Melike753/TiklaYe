@@ -43,5 +43,28 @@ namespace TiklaYe.Controllers
 
             return View(salesReport);
         }
+
+        public async Task<IActionResult> BusinessRequests()
+        {
+            var pendingBusinesses = await _context.BusinessOwners
+                .Where(b => !b.IsApproved)
+                .ToListAsync();
+
+            return View(pendingBusinesses);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ApproveBusiness(int id)
+        {
+            var businessOwner = await _context.BusinessOwners.FindAsync(id);
+            if (businessOwner != null)
+            {
+                businessOwner.IsApproved = true;
+                businessOwner.ApprovalDate = DateTime.Now;
+                _context.Update(businessOwner);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("BusinessRequests");
+        }
     }
 }

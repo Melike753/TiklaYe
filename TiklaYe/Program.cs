@@ -20,6 +20,7 @@ builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
@@ -36,6 +37,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.AccessDeniedPath = "/Home/AccessDenied";
+        options.LoginPath = "/Business/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied"; // Eriþim reddedildi yolu
     });
 
 var app = builder.Build();
@@ -44,6 +47,10 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
+}
+else
+{
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();

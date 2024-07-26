@@ -76,9 +76,15 @@ namespace TiklaYe.Controllers
 
                 if (businessOwner != null && VerifyPasswordHash(model.Password, businessOwner.Password))
                 {
+                    if (!businessOwner.IsApproved)
+                    {
+                        ModelState.AddModelError(string.Empty, "Hesabınız henüz onaylanmamış.");
+                        return View(model);
+                    }
+
                     // Giriş işlemi başarılı
                     await SignInUser(businessOwner.Email);
-
+                    HttpContext.Session.SetInt32("BusinessOwnerId", businessOwner.BusinessOwnerId);
                     if (businessOwner.Email == "admintiklaye@gmail.com")
                     {
                         // Admin sayfasına yönlendir
@@ -87,7 +93,7 @@ namespace TiklaYe.Controllers
                     else
                     {
                         // Normal işletmeciyi işletmeci ana sayfasına yönlendir
-                        return RedirectToAction("Dashboard", "Business");
+                        return RedirectToAction("Index", "PartnerProduct");
                     }
                 }
                 else
@@ -103,12 +109,13 @@ namespace TiklaYe.Controllers
             return View(model);
         }
 
-        public IActionResult Success()
+        public IActionResult Logout()
         {
-            return View();
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Business");
         }
 
-        public IActionResult Dashboard()
+        public IActionResult Success()
         {
             return View();
         }

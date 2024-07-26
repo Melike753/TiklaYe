@@ -21,6 +21,7 @@ namespace TiklaYe.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<BusinessOwner> BusinessOwners { get; set; }
+        public DbSet<PartnerProduct> PartnerProducts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -43,6 +44,15 @@ namespace TiklaYe.Data
                     .HasColumnType("datetime2");
 
                 // Diğer ayarlamalar...
+            });
+
+            modelBuilder.Entity<BusinessOwner>(entity =>
+            {
+                entity.Property(b => b.IsApproved)
+                      .HasDefaultValue(false); // Varsayılan olarak onaylı değil
+
+                entity.Property(b => b.ApprovalDate)
+                      .IsRequired(false); 
             });
         }
     }
