@@ -1,0 +1,183 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.SalesReportViewModel>
+
+@{
+    ViewData["Title"] = "Satış Raporu";
+    Layout = "_AdminLayout";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
+
+    .table-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .container {
+        margin: 0 auto;
+        max-width: 1500px;
+        padding: 0 15px;
+    }
+
+    h1 {
+        color: #363636;
+        margin-bottom: 20px;
+        margin-top: 40px;
+        text-align: center;
+        font-size: 30px;
+        border-bottom: 2px solid #4f4f4f;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        color: #363636;
+        margin-top: 20px;
+        font-weight: 750;
+    }
+
+    .card {
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .table th,
+        .table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .table th {
+            font-weight: bold;
+        }
+
+        .table thead th {
+            background-color: #343a40;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+    .btn-primary {
+        background-color: #b5b5b5;
+        border-color: #696969;
+        color: #000;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #828282;
+            border-color: #4f4f4f;
+            color: #000;
+        }
+
+
+    .form-inline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .form-inline .form-group {
+            flex: 1;
+            margin-right: 20px;
+            margin-top: 15px;
+        }
+
+            .form-inline .form-group:last-child {
+                margin-right: 0;
+            }
+
+        .form-inline .form-control {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .form-inline .btn {
+            margin-top: 20px;
+            display: block;
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+</style>
+
+<div class="container">
+    <h1>Satış Raporu</h1>
+    <div class="card">
+        <div class="card-body">
+            <form class="form-inline" method="get" action="@Url.Action("SalesReport", "Admin")">
+                <div class="form-group">
+                    <label for="startDate">Başlangıç Tarihi:</label>
+                    <input type="date" name="startDate" id="startDate" class="form-control" value="@Context.Request.Query["startDate"]" />
+                </div>
+                <div class="form-group">
+                    <label for="endDate">Bitiş Tarihi:</label>
+                    <input type="date" name="endDate" id="endDate" class="form-control" value="@Context.Request.Query["endDate"]" />
+                </div>
+                <button type="submit" class="btn btn-primary">Filtrele</button>
+            </form>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Kullanıcı ID</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Kullanıcı Email</th>
+                        <th>Toplam Sipariş Sayısı</th>
+                        <th>Toplam Tutar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.UserId</td>
+                            <td>@item.Name</td>
+                            <td>@item.Email</td>
+                            <td>@item.TotalOrders</td>
+                            <td>@item.TotalAmount.ToString("C")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h3>Toplam Gelir: @ViewBag.TotalRevenue.ToString("C")</h3>
+        </div>
+    </div>
+</div>

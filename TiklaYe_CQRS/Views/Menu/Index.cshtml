@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.Product>
+
+@{
+    ViewData["Title"] = "Menü";
+    Layout = "_Layout";
+}
+
+<!-- food section -->
+<section class="food_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                <br><br>
+                Menümüz
+            </h2>
+        </div>
+
+        <ul class="filters_menu">
+            <li class="active" data-filter="*">Tümü</li>
+            <li data-filter=".burger">Hamburger</li>
+            <li data-filter=".pizza">Pizza</li>
+            <li data-filter=".pasta">Makarna</li>
+            <li data-filter=".fries">Kızartma</li>
+        </ul>
+
+        <div class="filters-content">
+            <div class="row grid">
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-sm-6 col-lg-4 all">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="@product.ImageUrl" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5>
+                                            @product.Name
+                                        </h5>
+                                        <p>
+                                            @product.Description
+                                        </p>
+                                        <div class="options">
+                                            <h6>
+                                                @product.Price ₺
+                                            </h6>
+                                            <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@product.ProductId">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>Ürün bulunamadı.</p>
+                }
+            </div>
+        </div>
+
+        <div class="btn-box">
+            <a href="">
+                Daha Fazla Göster
+            </a>
+        </div>
+    </div>
+</section>
+<!-- end food section -->

@@ -1,0 +1,223 @@
+﻿@model List<TiklaYe_CQRS.Models.CartItem>
+
+@{
+    Layout = null; // Bu sayfada layout kullanmayacağım
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sepetim - TıklaYe</title>
+    <link rel="shortcut icon" href="/images/logo1.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .cart-img-bg {
+            background-image: url('/images/bg-cart.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            margin: auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .cart-card {
+            padding: 20px;
+        }
+
+        .text-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+            .table th, .table td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .table th {
+                background-color: #f1f1f1;
+            }
+
+            .table img {
+                border-radius: 4px;
+            }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid transparent;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+            border: 1px solid transparent;
+        }
+
+            .btn-danger:hover {
+                background-color: #bd2130;
+            }
+
+        .cart-information {
+            display: flex;
+            flex-direction: column;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dee2e6;
+            margin: 20px 0;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+            .alert-danger hr {
+                border-top-color: #f5c6cb;
+            }
+
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+
+            .alert-info hr {
+                border-top-color: #bee5eb;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="cart cart-img-bg">
+            <div class="cart-card">
+                <div class="cart-information">
+                    <div>
+                        <h3 class="text-title txt-primary">Sepetim</h3>
+                    </div>
+                    <hr />
+                    <!-- Hataları görüntülemek için -->
+                    @if (ViewData.ModelState != null && ViewData.ModelState.Any(m => m.Value.Errors.Count > 0))
+                    {
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                {
+                                    <li>@error.ErrorMessage</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    else if (Model != null && Model.Any())
+                    {
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Ürün</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Fiyat</th>
+                                    <th>Miktar</th>
+                                    <th>Toplam</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@item.ImageUrl" alt="@item.Name" width="50" />
+
+                                        </td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Price.ToString("C")</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.TotalPrice.ToString("C")</td>
+                                        <td>
+                                            <form asp-action="RemoveFromCart" method="post">
+                                                <input type="hidden" name="productId" value="@item.ProductId" />
+                                                <button type="submit" class="btn btn-danger">Sepetten Çıkar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div>
+                            <h3>Toplam: @Model.Sum(i => i.TotalPrice).ToString("C")</h3>
+                        </div>
+                        <div>
+                            <a asp-controller="Menu" asp-action="Index" class="btn btn-primary">Alışverişe Devam Et</a>
+                            <a asp-controller="Order" asp-action="Payment" class="btn btn-primary">Sepeti Onayla</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">Sepetinizde ürün bulunmamaktadır.</div>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
