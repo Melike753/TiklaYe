@@ -1,6 +1,8 @@
-﻿namespace TiklaYe_CQRS.Commands
+﻿using MediatR;
+
+namespace TiklaYe_CQRS.Commands
 {
-    public class CompleteOrderCommand
+    public class CompleteOrderCommand : IRequest<bool>
     {
         public string CardName { get; set; }
         public string CardNumber { get; set; }

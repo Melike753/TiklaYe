@@ -32,8 +32,16 @@ namespace TiklaYe_CQRS.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var userName = User.Identity.Name;
-                var user = _context.Users.FirstOrDefault(u => u.Username == userName);
+                // Kullanıcı ID'sini almak için
+                var userId = HttpContext.Session.GetInt32("UserId");
+
+                if (userId == null)
+                {
+                    ModelState.AddModelError("", "Kullanıcı bilgileri alınamadı.");
+                    return View();
+                }
+
+                var user = await _context.Users.FindAsync(userId);
 
                 if (user == null)
                 {
@@ -41,7 +49,7 @@ namespace TiklaYe_CQRS.Controllers
                     return View();
                 }
 
-                var cartItems = await _cartService.GetCartItems();
+                var cartItems = await _cartService.GetCartItems(userId.Value);
                 return View(cartItems);
             }
             else
@@ -53,6 +61,13 @@ namespace TiklaYe_CQRS.Controllers
         [HttpGet]
         public async Task<IActionResult> AddToCart(int productId)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             var product = await _context.Products.FindAsync(productId);
             if (product == null)
             {
@@ -61,6 +76,7 @@ namespace TiklaYe_CQRS.Controllers
 
             var command = new AddToCartCommand
             {
+                UserId = userId.Value,
                 ProductId = product.ProductId,
                 Name = product.Name,
                 ImageUrl = product.ImageUrl,
@@ -83,7 +99,19 @@ namespace TiklaYe_CQRS.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveFromCart(int productId)
         {
-            var command = new RemoveFromCartCommand { ProductId = productId };
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var command = new RemoveFromCartCommand
+            {
+                UserId = userId.Value,
+                ProductId = productId
+            };
+
             try
             {
                 await _removeFromCartHandler.Handle(command);
@@ -99,7 +127,14 @@ namespace TiklaYe_CQRS.Controllers
         [HttpPost]
         public async Task<IActionResult> ClearCartAndRedirect()
         {
-            var command = new ClearCartCommand();
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var command = new ClearCartCommand { UserId = userId.Value };
             await _clearCartHandler.Handle(command);
             return RedirectToAction("Index", "Home");
         }

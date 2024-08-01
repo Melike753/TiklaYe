@@ -101,7 +101,7 @@ namespace TiklaYe_CQRS.Controllers
                         return View(model);
                     }
 
-                    await SignInUser(user.Email);
+                    await SignInUser(user);
 
                     HttpContext.Session.SetInt32("UserId", user.UserId);
 
@@ -136,11 +136,12 @@ namespace TiklaYe_CQRS.Controllers
             return RedirectToAction("Login");
         }
 
-        private async Task SignInUser(string email)
+        private async Task SignInUser(User user)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

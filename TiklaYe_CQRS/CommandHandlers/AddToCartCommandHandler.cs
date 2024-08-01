@@ -19,7 +19,7 @@ namespace TiklaYe_CQRS.CommandHandlers
         {
             // Kullanıcının sepetini bul
             var userCart = await _context.CartItems
-                .FirstOrDefaultAsync(ci => ci.ProductId == command.ProductId);
+           .FirstOrDefaultAsync(ci => ci.UserId == command.UserId && ci.ProductId == command.ProductId);
 
             if (userCart != null)
             {
@@ -31,6 +31,7 @@ namespace TiklaYe_CQRS.CommandHandlers
                 // Ürün sepette yok, yeni ürün ekle
                 var newCartItem = new CartItem
                 {
+                    UserId = command.UserId,
                     ProductId = command.ProductId,
                     Name = command.Name,
                     ImageUrl = command.ImageUrl,

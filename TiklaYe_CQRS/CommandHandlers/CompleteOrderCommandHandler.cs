@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
 using TiklaYe_CQRS.Commands;
 using TiklaYe_CQRS.Data;
 using TiklaYe_CQRS.Models;
+using TiklaYe_CQRS.Services;
 
 namespace TiklaYe_CQRS.CommandHandlers
 {
-    public class CompleteOrderCommandHandler
+    public class CompleteOrderCommandHandler : IRequestHandler<CompleteOrderCommand, bool>
     {
         private readonly ApplicationDbContext _context;
         private readonly ICartService _cartService;
@@ -16,34 +17,31 @@ namespace TiklaYe_CQRS.CommandHandlers
             _cartService = cartService;
         }
 
-        public async Task Handle(CompleteOrderCommand command)
+        public async Task<bool> Handle(CompleteOrderCommand request, CancellationToken cancellationToken)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == command.UserId);
-            if (user == null)
-            {
-                throw new Exception("User not found.");
-            }
-
-            var cartItems = _cartService.GetCartItems(); // Alışveriş sepetindeki tüm ürünleri alır.
-            var orderNumber = Guid.NewGuid().ToString(); // Tek sipariş numarası oluşturur.
+            var cartItems = _cartService.GetCartItems(request.UserId);
+            var orderNumber = Guid.NewGuid().ToString();
 
             foreach (var item in cartItems)
             {
                 var purchase = new Purchase
                 {
-                    UserId = user.UserId,
+                    UserId = request.UserId,
                     PurchaseDate = DateTime.Now,
                     OrderNumber = orderNumber,
                     ProductName = item.Name,
                     UnitPrice = item.Price,
                     Quantity = item.Quantity,
-                    TotalPrice = item.Price * item.Quantity, // Toplam fiyatı hesapla
+                    TotalPrice = item.TotalPrice,
                     Status = "Hazırlanıyor"
                 };
 
                 _context.Purchases.Add(purchase);
             }
+
             await _context.SaveChangesAsync();
+            _cartService.ClearCart(request.UserId);
+            return true;
         }
     }
 }

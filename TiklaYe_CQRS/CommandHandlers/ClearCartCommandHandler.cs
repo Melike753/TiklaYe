@@ -16,7 +16,9 @@ namespace TiklaYe_CQRS.CommandHandlers
         // Alışveriş sepetindeki tüm öğeleri temizler.
         public async Task Handle(ClearCartCommand command)
         {
-            var cartItems = _context.CartItems.ToList();
+            var cartItems = _context.CartItems
+           .Where(ci => ci.UserId == command.UserId)
+           .ToList();
             _context.CartItems.RemoveRange(cartItems);
             await _context.SaveChangesAsync();
         }

@@ -1,5 +1,6 @@
 ﻿using TiklaYe_CQRS.Models;
 using TiklaYe_CQRS.Queries;
+using TiklaYe_CQRS.Services;
 
 namespace TiklaYe_CQRS.QueryHandlers
 {
@@ -14,7 +15,7 @@ namespace TiklaYe_CQRS.QueryHandlers
 
         public IEnumerable<CartItem> Handle(GetCartItemsQuery query)
         {
-            return _cartService.GetCartItems();
+            return _cartService.GetCartItems(query.UserId);
         }
     }
 }

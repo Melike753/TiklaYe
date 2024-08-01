@@ -21,18 +21,28 @@ namespace TiklaYe_CQRS.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var userName = User.Identity.Name;
-                var user = _context.Users.FirstOrDefault(u => u.Username == userName);
+                // Kullanıcı ID'sini oturumdan al
+                var userId = HttpContext.Session.GetInt32("UserId");
 
-                if (user == null)
+                if (userId.HasValue)
                 {
-                    ModelState.AddModelError("", "Geri bildirim göndermek için önce giriş yapmalısınız..");
+                    var user = _context.Users.FirstOrDefault(u => u.UserId == userId.Value);
+
+                    if (user == null)
+                    {
+                        ModelState.AddModelError("", "Geri bildirim göndermek için önce giriş yapmalısınız.");
+                        return View();
+                    }
+
+                    ViewBag.UserName = user.Name;
+                    ViewBag.UserEmail = user.Email;
                     return View();
                 }
-
-                ViewBag.UserName = user.Name;
-                ViewBag.UserEmail = user.Email;
-                return View();
+                else
+                {
+                    ModelState.AddModelError("", "Kullanıcı ID'si alınamadı.");
+                    return View();
+                }
             }
             else
             {
@@ -51,33 +61,43 @@ namespace TiklaYe_CQRS.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                var userName = User.Identity.Name;
-                var user = _context.Users.FirstOrDefault(u => u.Username == userName);
+                // Kullanıcı ID'sini oturumdan al
+                var userId = HttpContext.Session.GetInt32("UserId");
 
-                if (user == null)
+                if (userId.HasValue)
                 {
-                    ModelState.AddModelError("", "Kullanıcı bulunamadı.");
-                    return View();
+                    var user = _context.Users.FirstOrDefault(u => u.UserId == userId.Value);
+
+                    if (user == null)
+                    {
+                        ModelState.AddModelError("", "Kullanıcı bulunamadı.");
+                        return View();
+                    }
+
+                    var command = new CreateFeedbackCommand
+                    {
+                        UserId = user.UserId,
+                        Name = user.Name,
+                        Email = user.Email,
+                        Subject = subject,
+                        Message = message
+                    };
+
+                    try
+                    {
+                        await _createFeedbackHandler.Handle(command);
+                        TempData["Success"] = "Geri bildiriminiz başarıyla gönderildi.";
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", "Geri bildirim gönderilirken bir hata oluştu: " + ex.Message);
+                        return View();
+                    }
                 }
-
-                var command = new CreateFeedbackCommand
+                else
                 {
-                    UserId = user.UserId,
-                    Name = user.Name,
-                    Email = user.Email,
-                    Subject = subject,
-                    Message = message
-                };
-
-                try
-                {
-                    await _createFeedbackHandler.Handle(command);
-                    TempData["Success"] = "Geri bildiriminiz başarıyla gönderildi.";
-                    return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "Geri bildirim gönderilirken bir hata oluştu: " + ex.Message);
+                    ModelState.AddModelError("", "Kullanıcı ID'si alınamadı.");
                     return View();
                 }
             }

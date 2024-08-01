@@ -4,11 +4,6 @@ using TiklaYe_CQRS.Models;
 
 namespace TiklaYe_CQRS.Services
 {
-    public interface ICartQueryService
-    {
-        Task<IEnumerable<CartItem>> GetCartItems();
-    }
-
     public class CartQueryService : ICartQueryService
     {
         private readonly ApplicationDbContext _context;
@@ -18,9 +13,11 @@ namespace TiklaYe_CQRS.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<CartItem>> GetCartItems()
+        public async Task<IEnumerable<CartItem>> GetCartItems(int userId)
         {
-            return await _context.CartItems.ToListAsync();
+            return await _context.CartItems
+                .Where(ci => ci.UserId == userId)
+                .ToListAsync();
         }
     }
 }

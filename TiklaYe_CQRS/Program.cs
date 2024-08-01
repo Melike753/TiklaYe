@@ -5,9 +5,6 @@ using TiklaYe_CQRS.CommandHandlers;
 using MediatR;
 using TiklaYe_CQRS.QueryHandlers;
 using TiklaYe_CQRS.Services;
-using System.Reflection;
-using TiklaYe_CQRS.Models;
-using TiklaYe_CQRS.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +27,7 @@ var dbconnection = builder.Configuration.GetConnectionString("dbConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(dbconnection));
 
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(typeof(CompleteOrderCommandHandler).Assembly);
 builder.Services.AddScoped<AddProductCommandHandler>();
 builder.Services.AddScoped<AddToCartCommandHandler>();
 builder.Services.AddScoped<ApproveBusinessCommandHandler>();
@@ -43,7 +40,7 @@ builder.Services.AddScoped<DeleteProductCommandHandler>();
 builder.Services.AddScoped<DeleteUserCommandHandler>();
 builder.Services.AddScoped<DownloadInvoiceCommandHandler>();
 builder.Services.AddScoped<EditProductCommandHandler>();
-builder.Services.AddScoped<ICartService, TiklaYe_CQRS.Models.CartService>();
+builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<LoginBusinessOwnerCommandHandler>();
 builder.Services.AddScoped<LoginCommandHandler>();
 builder.Services.AddScoped<LogoutCommandHandler>();
@@ -81,8 +78,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.AccessDeniedPath = "/Home/AccessDenied";
-        options.LoginPath = "/Login/Login";
-        options.LogoutPath = "/Login/Logout";
+        options.LoginPath = "/Account/Login";
         options.AccessDeniedPath = "/Account/AccessDenied";
     });
 

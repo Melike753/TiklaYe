@@ -16,7 +16,7 @@ namespace TiklaYe_CQRS.CommandHandlers
         public async Task Handle(RemoveFromCartCommand command)
         {
             var cartItem = await _context.CartItems
-                .FirstOrDefaultAsync(ci => ci.ProductId == command.ProductId);
+           .FirstOrDefaultAsync(ci => ci.UserId == command.UserId && ci.ProductId == command.ProductId);
 
             if (cartItem != null)
             {

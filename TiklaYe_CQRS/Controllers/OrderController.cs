@@ -1,40 +1,39 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc;
-using TiklaYe_CQRS.CommandHandlers;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using MediatR;
 using TiklaYe_CQRS.Commands;
-using TiklaYe_CQRS.Models;
+using TiklaYe_CQRS.Queries;
 
-namespace TiklaYe_CQRS.Controllers
+namespace TiklaYe.Controllers
 {
     public class OrderController : Controller
     {
-        private readonly ICartService _cartService;
-        private readonly CompleteOrderCommandHandler _completeOrderHandler;
+        private readonly IMediator _mediator;
 
-        public OrderController(ICartService cartService, CompleteOrderCommandHandler completeOrderHandler)
+        public OrderController(IMediator mediator)
         {
-            _cartService = cartService;
-            _completeOrderHandler = completeOrderHandler;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        // Sepet öğelerini alır ve toplam tutarı hesaplar.
-        public IActionResult Payment()
+        public async Task<IActionResult> Payment()
         {
-            var cartItems = _cartService.GetCartItems();
-            var totalAmount = cartItems.Sum(item => item.TotalPrice);
-            ViewBag.TotalAmount = totalAmount.ToString("C");
-            return View(cartItems);
+            var userId = GetUserId();
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var query = new GetPaymentQuery { UserId = userId.Value };
+            var viewModel = await _mediator.Send(query);
+
+            ViewBag.TotalAmount = viewModel.TotalAmount.ToString("C");
+            return View(viewModel.CartItems);
         }
 
         [HttpPost]
         public async Task<IActionResult> CompleteOrder(string CardName, string CardNumber, string ExpiryDate, string CVV, bool SaveCard, string DeliveryAddress)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
             var userId = GetUserId();
             if (!userId.HasValue)
             {
@@ -52,16 +51,17 @@ namespace TiklaYe_CQRS.Controllers
                 UserId = userId.Value
             };
 
-            try
+            var result = await _mediator.Send(command);
+            if (result)
             {
-                await _completeOrderHandler.Handle(command);
                 return RedirectToAction("OrderConfirmation");
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-                return View("Payment", _cartService.GetCartItems());
-            }
+
+            ModelState.AddModelError(string.Empty, "Sipariş tamamlanırken bir hata oluştu.");
+            var query = new GetPaymentQuery { UserId = userId.Value };
+            var viewModel = await _mediator.Send(query);
+            ViewBag.TotalAmount = viewModel.TotalAmount.ToString("C");
+            return View("Payment", viewModel.CartItems);
         }
 
         private int? GetUserId()
