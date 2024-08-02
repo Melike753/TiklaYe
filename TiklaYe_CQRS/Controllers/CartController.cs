@@ -14,6 +14,7 @@ namespace TiklaYe_CQRS.Controllers
         private readonly ICartQueryService _cartService;
         private readonly ApplicationDbContext _context;
 
+        // Constructor dependency injection
         public CartController(
             AddToCartCommandHandler addToCartHandler,
             RemoveFromCartCommandHandler removeFromCartHandler,
@@ -28,6 +29,7 @@ namespace TiklaYe_CQRS.Controllers
             _context = context;
         }
 
+        // Sepet sayfasını gösterir.
         public async Task<IActionResult> Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -59,6 +61,7 @@ namespace TiklaYe_CQRS.Controllers
         }
 
         [HttpGet]
+        // Sepete ürün ekleme işlemini gerçekleştirir.
         public async Task<IActionResult> AddToCart(int productId)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
@@ -68,7 +71,7 @@ namespace TiklaYe_CQRS.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var product = await _context.Products.FindAsync(productId);
+            var product = await _context.PartnerProducts.FindAsync(productId);
             if (product == null)
             {
                 return NotFound();
@@ -97,6 +100,7 @@ namespace TiklaYe_CQRS.Controllers
         }
 
         [HttpPost]
+        // Sepetten ürün çıkarma işlemini gerçekleştirir.
         public async Task<IActionResult> RemoveFromCart(int productId)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
@@ -125,6 +129,7 @@ namespace TiklaYe_CQRS.Controllers
         }
 
         [HttpPost]
+        // Sepeti temizleme ve ana sayfaya yönlendirme işlemini gerçekleştirir.
         public async Task<IActionResult> ClearCartAndRedirect()
         {
             var userId = HttpContext.Session.GetInt32("UserId");

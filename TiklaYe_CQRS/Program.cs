@@ -27,7 +27,9 @@ var dbconnection = builder.Configuration.GetConnectionString("dbConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(dbconnection));
 
+builder.Services.AddMediatR(typeof(Program));
 builder.Services.AddMediatR(typeof(CompleteOrderCommandHandler).Assembly);
+builder.Services.AddSession();
 builder.Services.AddScoped<AddProductCommandHandler>();
 builder.Services.AddScoped<AddToCartCommandHandler>();
 builder.Services.AddScoped<ApproveBusinessCommandHandler>();
@@ -41,13 +43,13 @@ builder.Services.AddScoped<DeleteUserCommandHandler>();
 builder.Services.AddScoped<DownloadInvoiceCommandHandler>();
 builder.Services.AddScoped<EditProductCommandHandler>();
 builder.Services.AddScoped<ICartService, CartService>();
-builder.Services.AddScoped<LoginBusinessOwnerCommandHandler>();
+builder.Services.AddScoped<LoginQueryHandler>();
 builder.Services.AddScoped<LoginCommandHandler>();
 builder.Services.AddScoped<LogoutCommandHandler>();
 builder.Services.AddScoped<ProductCreateCommandHandler>();
 builder.Services.AddScoped<ProductDeleteCommandHandler>();
 builder.Services.AddScoped<ProductUpdateCommandHandler>();
-builder.Services.AddScoped<RegisterBusinessOwnerCommandHandler>();
+builder.Services.AddScoped<RegisterCommandHandler>();
 builder.Services.AddScoped<RegisterUserCommandHandler>();
 builder.Services.AddScoped<RemoveFromCartCommandHandler>();
 builder.Services.AddScoped<UpdateCategoryCommandHandler>();
@@ -80,6 +82,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Home/AccessDenied";
         options.LoginPath = "/Account/Login";
         options.AccessDeniedPath = "/Account/AccessDenied";
+        options.LoginPath = "/Business/Login";
     });
 
 var app = builder.Build();

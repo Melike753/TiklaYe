@@ -4,29 +4,35 @@ namespace TiklaYe_CQRS.Models
 {
     public class BusinessOwner
     {
+        [Key]
         public int BusinessOwnerId { get; set; }
 
-        [Required(ErrorMessage = "Ad gereklidir.")]
+        [Required]
+        [StringLength(100)]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Soyad gereklidir.")]
+        [Required]
+        [StringLength(100)]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "E-Posta gereklidir.")]
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Telefon Numarası gereklidir.")]
+        [Required]
         [Phone]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Şifre gereklidir.")]
-        [DataType(DataType.Password)]
-        [MaxLength(256)]
-        public string Password { get; set; }
-        public string PasswordHash { get; set; } // Şifre hash'ini saklamak için
+        [Required]
+        public string PasswordHash { get; set; }
 
-        public bool IsApproved { get; set; } // Admin onayı için
-        public DateTime? ApprovalDate { get; set; } // Onay tarihi
+        [Required]
+        public string RestaurantName {  get; set; }
+
+        public string LogoUrl => $"/images/logos/{BusinessOwnerId}.webp"; // İşletmeci logosu URL'i
+
+        public bool IsApproved { get; set; }
+
+        public DateTime? ApprovalDate { get; set; } = DateTime.UtcNow;
     }
 }

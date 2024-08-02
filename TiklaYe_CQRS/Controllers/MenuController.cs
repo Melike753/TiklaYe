@@ -13,10 +13,31 @@ namespace TiklaYe_CQRS.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        // Adminin eklediği aktif ürünleri listelemek için kullanılır. 
+        //public async Task<IActionResult> Index()
+        //{
+        //    // Sadece aktif ürünleri getir
+        //    var products = await _context.Products.Where(p => p.IsActive).ToListAsync();
+        //    return View(products);
+        //}
+
+        // Onaylanan işletmecilerin listesini getirir.
+        public async Task<IActionResult> Restaurants()
         {
-            // Sadece aktif ürünleri getir
-            var products = await _context.Products.Where(p => p.IsActive).ToListAsync();
+            var businessOwners = await _context.BusinessOwners
+                .Where(bo => bo.IsApproved)
+                .ToListAsync();
+
+            return View(businessOwners);
+        }
+
+        // Belirli bir işletmecinin eklediği ürünlerin listesini getirir.
+        public async Task<IActionResult> PartnerProducts(int businessOwnerId)
+        {
+            var products = await _context.PartnerProducts
+                .Where(p => p.BusinessOwnerId == businessOwnerId && p.IsActive) // İşletmeciye ait ve aktif ürünleri filtreler
+                .ToListAsync();
+
             return View(products);
         }
     }

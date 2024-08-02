@@ -1,30 +1,24 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
-using TiklaYe_CQRS.CommandHandlers;
 using TiklaYe_CQRS.Commands;
-using TiklaYe_CQRS.Models;
+using TiklaYe_CQRS.Queries;
 
 namespace TiklaYe_CQRS.Controllers
 {
-    // İşletme sahiplerinin kayıt, giriş ve çıkış işlemlerini yönetmek için. 
     public class BusinessController : Controller
     {
-        private readonly RegisterBusinessOwnerCommandHandler _registerHandler; // Kayıt işlemlerini yönetmek için
-        private readonly LoginBusinessOwnerCommandHandler _loginHandler; // Giriş işlemlerini yönetmek için
+        private readonly IMediator _mediator;
 
-        //  Dependency Injection
-        public BusinessController(
-            RegisterBusinessOwnerCommandHandler registerHandler,
-            LoginBusinessOwnerCommandHandler loginHandler)
+        public BusinessController(IMediator mediator)
         {
-            _registerHandler = registerHandler;
-            _loginHandler = loginHandler;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        // Kayıt sayfasını görüntüler.
+        // Register sayfasını gösterir.
         public IActionResult Register()
         {
             return View();
@@ -32,36 +26,26 @@ namespace TiklaYe_CQRS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(BusinessOwner model)
+        // Register formunu işler.
+        public async Task<IActionResult> Register(RegisterCommand command)
         {
             if (ModelState.IsValid)
             {
-                try
+                var result = await _mediator.Send(command);
+                if (result)
                 {
-                    var command = new RegisterBusinessOwnerCommand
-                    {
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        Email = model.Email,
-                        PhoneNumber = model.PhoneNumber,
-                        Password = model.Password
-                    };
-
-                    await _registerHandler.Handle(command);
-                    await SignInUser(model.Email);
                     return RedirectToAction("Success");
                 }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", ex.Message);
-                }
-            }
 
-            return View(model);
+                ModelState.AddModelError("", "E-posta zaten kullanılıyor.");
+            }
+            
+            // Model doğrulama başarısızsa veya kayıt başarısızsa formu tekrar gösterir.
+            return View(command);
         }
 
         [HttpGet]
-        // Giriş sayfasını görüntüler.
+        // Login sayfasını gösterir.
         public IActionResult Login()
         {
             return View();
@@ -69,62 +53,49 @@ namespace TiklaYe_CQRS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(BusinessLoginViewModel model)
+        // Login formunu işler.
+        public async Task<IActionResult> Login(LoginQuery query)
         {
             if (ModelState.IsValid)
             {
-                try
+                var businessOwner = await _mediator.Send(query);
+                if (businessOwner != null)
                 {
-                    var command = new LoginBusinessOwnerCommand
-                    {
-                        Email = model.Email,
-                        Password = model.Password
-                    };
-
-                    var businessOwner = await _loginHandler.Handle(command);
-
-                    if (businessOwner == null)
-                    {
-                        ModelState.AddModelError("", "Geçersiz e-posta veya şifre.");
-                        return View(model);
-                    }
-
-                    // Giriş işlemi başarılı
+                    // Kullanıcı girişini gerçekleştirir.
                     await SignInUser(businessOwner.Email);
-
                     HttpContext.Session.SetInt32("BusinessOwnerId", businessOwner.BusinessOwnerId);
-
+                    
                     if (businessOwner.Email == "admintiklaye@gmail.com")
                     {
-                        // Admin sayfasına yönlendir
                         return RedirectToAction("Index", "Admin");
                     }
                     else
                     {
-                        // Normal işletmeciyi işletmeci ana sayfasına yönlendir
                         return RedirectToAction("Index", "PartnerProduct");
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    ModelState.AddModelError("", ex.Message);
+                    ModelState.AddModelError("", "Geçersiz giriş bilgileri veya hesabınız henüz onaylanmamış.");
                 }
             }
-            return View(model);
+
+            // Model doğrulama başarısızsa formu tekrar gösterir.
+            return View(query);
         }
 
-        // Kayıt işlemi başarılı olduğunda gösterilecek sayfayı görüntüler.
+        // Kayıt başarılı sayfasını gösterir.
         public IActionResult Success()
         {
             return View();
         }
 
-        //  Kullanıcıyı kimlik doğrulama sistemi ile oturum açmak için kullanılır. 
+        // Kullanıcıyı giriş yapar.
         private async Task SignInUser(string email)
         {
             var claims = new List<Claim>
             {
-            new Claim(ClaimTypes.Email, email)
+                new Claim(ClaimTypes.Email, email)
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

@@ -40,7 +40,7 @@ namespace TiklaYe_CQRS.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Kullanıcı ID'si alınamadı.");
+                    ModelState.AddModelError("", "Geri bildirim göndermek için önce giriş yapmalısınız.");
                     return View();
                 }
             }

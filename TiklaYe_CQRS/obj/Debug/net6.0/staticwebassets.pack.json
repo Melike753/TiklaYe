@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\images\\about.png"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\akdeniz.jpg",
+      "PackagePath": "staticwebassets\\images\\akdeniz.jpg"
+    },
+    {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\bg-cart.jpg",
       "PackagePath": "staticwebassets\\images\\bg-cart.jpg"
     },
@@ -43,6 +47,54 @@
     {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\bg2.jpg",
       "PackagePath": "staticwebassets\\images\\bg2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\buyukboypizza.jpg",
+      "PackagePath": "staticwebassets\\images\\buyukboypizza.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\caffelatte.jpg",
+      "PackagePath": "staticwebassets\\images\\caffelatte.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\ciftlikevipizza.jpg",
+      "PackagePath": "staticwebassets\\images\\ciftlikevipizza.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\cigkoftetacopaketi.jpg",
+      "PackagePath": "staticwebassets\\images\\cigkoftetacopaketi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\cileklipasta.jpg",
+      "PackagePath": "staticwebassets\\images\\cileklipasta.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\coldbrewlatte.jpg",
+      "PackagePath": "staticwebassets\\images\\coldbrewlatte.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\doner.webp",
+      "PackagePath": "staticwebassets\\images\\doner.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\doritoslmegacigkoftedurum.jpg",
+      "PackagePath": "staticwebassets\\images\\doritoslmegacigkoftedurum.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\doublecheeseburgermenu.jpg",
+      "PackagePath": "staticwebassets\\images\\doublecheeseburgermenu.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\doublezingerburgermenu.jpg",
+      "PackagePath": "staticwebassets\\images\\doublezingerburgermenu.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\etdonerdurum.jpg",
+      "PackagePath": "staticwebassets\\images\\etdonerdurum.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\etdurumdoner.jpg",
+      "PackagePath": "staticwebassets\\images\\etdurumdoner.jpg"
     },
     {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\f1.png",
@@ -81,8 +133,84 @@
       "PackagePath": "staticwebassets\\images\\f9.png"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\festival.jpg",
+      "PackagePath": "staticwebassets\\images\\festival.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\gamermenu.jpg",
+      "PackagePath": "staticwebassets\\images\\gamermenu.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\icedcaffeamericano.jpg",
+      "PackagePath": "staticwebassets\\images\\icedcaffeamericano.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\icedcaffelatte.jpg",
+      "PackagePath": "staticwebassets\\images\\icedcaffelatte.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\icedcaffemocca.jpg",
+      "PackagePath": "staticwebassets\\images\\icedcaffemocca.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\kfcfırsatmenusu.jpg",
+      "PackagePath": "staticwebassets\\images\\kfcfırsatmenusu.jpg"
+    },
+    {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logo1.png",
       "PackagePath": "staticwebassets\\images\\logo1.png"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logos\\1.webp",
+      "PackagePath": "staticwebassets\\images\\logos\\1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logos\\2.webp",
+      "PackagePath": "staticwebassets\\images\\logos\\2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logos\\3.webp",
+      "PackagePath": "staticwebassets\\images\\logos\\3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logos\\4.webp",
+      "PackagePath": "staticwebassets\\images\\logos\\4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logos\\5.webp",
+      "PackagePath": "staticwebassets\\images\\logos\\5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logos\\6.webp",
+      "PackagePath": "staticwebassets\\images\\logos\\6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logos\\7.webp",
+      "PackagePath": "staticwebassets\\images\\logos\\7.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\logos\\8.webp",
+      "PackagePath": "staticwebassets\\images\\logos\\8.webp"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\mantarlısucuklupizza.jpg",
+      "PackagePath": "staticwebassets\\images\\mantarlısucuklupizza.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\margarita.jpg",
+      "PackagePath": "staticwebassets\\images\\margarita.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\mcchickenmenu.jpg",
+      "PackagePath": "staticwebassets\\images\\mcchickenmenu.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\megacigkoftedurum.jpg",
+      "PackagePath": "staticwebassets\\images\\megacigkoftedurum.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\meyveliyazpastası.jpg",
+      "PackagePath": "staticwebassets\\images\\meyveliyazpastası.jpg"
     },
     {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\o1.jpg",
@@ -93,12 +221,40 @@
       "PackagePath": "staticwebassets\\images\\o2.jpg"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\patateskızartmasıbuyuk.jpg",
+      "PackagePath": "staticwebassets\\images\\patateskızartmasıbuyuk.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\patateskızartmasısuper.jpg",
+      "PackagePath": "staticwebassets\\images\\patateskızartmasısuper.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\pepperoni.jpg",
+      "PackagePath": "staticwebassets\\images\\pepperoni.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\pide.webp",
+      "PackagePath": "staticwebassets\\images\\pide.webp"
+    },
+    {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\restaurant.jpg",
       "PackagePath": "staticwebassets\\images\\restaurant.jpg"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\sebzesever.jpg",
+      "PackagePath": "staticwebassets\\images\\sebzesever.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\suşi.jpg",
+      "PackagePath": "staticwebassets\\images\\suşi.jpg"
+    },
+    {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\tatli.jpg",
       "PackagePath": "staticwebassets\\images\\tatli.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\zurnadavukdöner.jpg",
+      "PackagePath": "staticwebassets\\images\\zurnadavukdöner.jpg"
     },
     {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\js\\site.js",
