@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\fonts\\Platypi-BoldItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Platypi-BoldItalic.ttf"
+    },
+    {
       "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\about.png",
       "PackagePath": "staticwebassets\\images\\about.png"
     },

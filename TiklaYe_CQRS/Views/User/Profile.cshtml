@@ -17,13 +17,13 @@
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
-            background: #f4f4f4;
+            background: #f5f5f5; 
             margin: 0;
             padding: 0;
         }
 
         .profile-img-bg {
-            background-image: url('/images/bg-profile.jpg');
+            background-color: #8b0000; 
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -35,13 +35,11 @@
         .profile-card {
             background: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
             width: 100%;
             text-align: center;
-            justify-content: center;
-            align-items: center;
         }
 
             .profile-card h3 {
@@ -50,34 +48,34 @@
             }
 
             .profile-card .btn-secondary {
-                background: #b23aee;
+                background: #cd0000; 
                 color: white;
-                padding: 10px 20px;
+                padding: 12px 24px;
                 border: none;
-                border-radius: 4px;
+                border-radius: 6px;
                 cursor: pointer;
                 text-decoration: none;
                 display: inline-block;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
 
                 .profile-card .btn-secondary:hover {
-                    background: #9a32cd;
+                    background: #a80000; 
                 }
 
             .profile-card .btn-primary {
-                background: #9a32cd;
+                background: #8b0000; 
                 color: white;
-                padding: 10px 20px;
+                padding: 12px 24px;
                 border: none;
-                border-radius: 4px;
+                border-radius: 6px;
                 cursor: pointer;
                 text-decoration: none;
                 display: inline-block;
             }
 
                 .profile-card .btn-primary:hover {
-                    background: #68228b;
+                    background: #600000; 
                 }
 
         .auth-box {
@@ -85,7 +83,7 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: left;
         }
 
@@ -97,9 +95,9 @@
 
             .form-group input {
                 width: 100%;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
+                padding: 12px;
+                border: 1px solid #ddd;
+                border-radius: 6px;
                 box-sizing: border-box;
             }
 
@@ -118,7 +116,6 @@
             border-top: 1px solid #eee;
             margin: 20px 0;
         }
-
     </style>
 </head>
 <body>
@@ -126,14 +123,14 @@
         <section class="profile profile-img-bg">
             <div class="profile-card">
                 <div>
-                    <a asp-controller="Profile" asp-action="Index" class="btn btn-secondary">Kullanıcı Bilgileri</a>
-                    <a asp-controller="Purchase" asp-action="Index" class="btn btn-secondary">Satın Alma Geçmişi</a>
+                    <a asp-controller="User" asp-action="Profile" class="btn btn-secondary">Kullanıcı Bilgileri</a>
+                    <a asp-controller="User" asp-action="PurchaseHistory" class="btn btn-secondary">Geçmiş Siparişlerim</a>
                 </div>
                 @if (TempData["SuccessMessage"] != null)
                 {
                     <div class="alert alert-success">@TempData["SuccessMessage"]</div>
                 }
-                <form id="profileForm" asp-controller="Profile" asp-action="Update" method="post">
+                <form id="profileForm" asp-controller="User" asp-action="UpdateProfile" method="post">
                     <div class="auth-box">
                         <div>
                             <h3 class="text-title txt-primary">Kullanıcı Bilgileri</h3>

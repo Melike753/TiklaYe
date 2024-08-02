@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TiklaYe_CQRS.Commands;
@@ -9,7 +10,7 @@ using Document = iTextSharp.text.Document;
 namespace TiklaYe_CQRS.CommandHandlers
 {
     // Belirli bir satın alma işlemi için bir PDF fatura oluşturur ve bu faturayı bir dosya olarak kullanıcıya sunar. 
-    public class DownloadInvoiceCommandHandler
+    public class DownloadInvoiceCommandHandler : IRequestHandler<DownloadInvoiceCommand, byte[]>
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,11 +19,13 @@ namespace TiklaYe_CQRS.CommandHandlers
             _context = context;
         }
 
-        public async Task<IActionResult> Handle(DownloadInvoiceCommand command)
+        public async Task<byte[]> Handle(DownloadInvoiceCommand request, CancellationToken cancellationToken)
         {
-            var purchase = await _context.Purchases.FirstOrDefaultAsync(p => p.PurchaseId == command.PurchaseId);
+            var purchase = await _context.Purchases.FirstOrDefaultAsync(p => p.PurchaseId == request.PurchaseId, cancellationToken);
             if (purchase == null)
-                return new NotFoundResult();
+            {
+                return null;
+            }
 
             using (var stream = new MemoryStream())
             {
@@ -31,7 +34,7 @@ namespace TiklaYe_CQRS.CommandHandlers
                 document.Open();
 
                 // Türkçe karakter desteği için font ayarı
-                string fontPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "fonts", "arial.ttf");
+                string fontPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "fonts", "Platypi-BoldItalic.ttf");
                 var bfArialUniCode = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 var font = new Font(bfArialUniCode, 12, Font.NORMAL);
                 var boldFont = new Font(bfArialUniCode, 12, Font.BOLD);
@@ -139,13 +142,13 @@ namespace TiklaYe_CQRS.CommandHandlers
                 var footer = new Paragraph("Tıkla Ye'yi tercih ettiğiniz için teşekkür ederiz!", font)
                 {
                     Alignment = Element.ALIGN_CENTER,
-                    SpacingBefore = 30
+                    SpacingBefore = 100
                 };
                 document.Add(footer);
 
                 document.Close();
                 byte[] file = stream.ToArray(); // MemoryStream içindeki PDF verilerini byte dizisine çevirir.
-                return new FileContentResult(file, "application/pdf") { FileDownloadName = "TıklaYeFatura.pdf" };
+                return file;
             }
         }
     }

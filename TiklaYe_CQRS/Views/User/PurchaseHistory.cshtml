@@ -128,7 +128,7 @@
                                 <td data-label="Toplam Tutar">@purchase.TotalPrice.ToString("C")</td>
                                 <td data-label="Durum">@purchase.Status</td>
                                 <td data-label="Fatura">
-                                    <a asp-controller="Purchase" asp-action="DownloadInvoice" asp-route-id="@purchase.PurchaseId" class="btn btn-primary">Faturayı İndir</a>
+                                    <a asp-controller="User" asp-action="DownloadInvoice" asp-route-id="@purchase.PurchaseId" class="btn btn-primary">Faturayı İndir</a>
                                 </td>
                             </tr>
                         }

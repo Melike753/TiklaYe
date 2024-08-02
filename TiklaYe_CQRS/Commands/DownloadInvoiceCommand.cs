@@ -1,6 +1,8 @@
-﻿namespace TiklaYe_CQRS.Commands
+﻿using MediatR;
+
+namespace TiklaYe_CQRS.Commands
 {
-    public class DownloadInvoiceCommand
+    public class DownloadInvoiceCommand : IRequest<byte[]>
     {
         public int PurchaseId { get; set; }
     }

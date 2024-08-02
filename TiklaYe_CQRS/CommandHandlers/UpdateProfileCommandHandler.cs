@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
 using System.Security.Cryptography;
 using System.Text;
 using TiklaYe_CQRS.Commands;
@@ -7,7 +7,7 @@ using TiklaYe_CQRS.Data;
 namespace TiklaYe_CQRS.CommandHandlers
 {
     // Bir kullanıcının profil bilgilerini güncellemek için kullanılır. 
-    public class UpdateProfileCommandHandler
+    public class UpdateProfileCommandHandler : IRequestHandler<UpdateProfileCommand, bool>
     {
         private readonly ApplicationDbContext _context;
 
@@ -16,46 +16,44 @@ namespace TiklaYe_CQRS.CommandHandlers
             _context = context;
         }
 
-        public async Task Handle(UpdateProfileCommand command)
+        public async Task<bool> Handle(UpdateProfileCommand request, CancellationToken cancellationToken)
         {
-            if (command == null)
-            {
-                throw new ArgumentNullException(nameof(command), "Command cannot be null");
-            }
+            var user = await _context.Users.FindAsync(request.UserId);
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == command.Username);
             if (user == null)
             {
-                throw new Exception("User not found.");
+                return false;
             }
 
-            if (!string.IsNullOrWhiteSpace(command.Username))
+            if (!string.IsNullOrWhiteSpace(request.Username))
             {
-                user.Username = command.Username;
+                user.Username = request.Username;
             }
 
-            if (!string.IsNullOrWhiteSpace(command.Email))
+            if (!string.IsNullOrWhiteSpace(request.Email))
             {
-                user.Email = command.Email;
+                user.Email = request.Email;
             }
 
-            if (!string.IsNullOrWhiteSpace(command.Mobile))
+            if (!string.IsNullOrWhiteSpace(request.Mobile))
             {
-                user.Mobile = command.Mobile;
+                user.Mobile = request.Mobile;
             }
 
-            if (!string.IsNullOrWhiteSpace(command.Address))
+            if (!string.IsNullOrWhiteSpace(request.Address))
             {
-                user.Address = command.Address;
+                user.Address = request.Address;
             }
 
-            if (!string.IsNullOrEmpty(command.Password))
+            if (!string.IsNullOrEmpty(request.Password))
             {
-                user.Password = HashPassword(command.Password);
+                user.Password = HashPassword(request.Password);
             }
 
             _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return true;
         }
 
         private string HashPassword(string password)

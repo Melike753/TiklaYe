@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ko6QyyaGB0xKXNAAzroxCUIGhRkiRXjcga/NH5UEbgY=",
+  "Hash": "b08/4Eb5kDntPwdfwKqFJSlxfab9e6jEhpp/5+92Lb8=",
   "Source": "TiklaYe_CQRS",
   "BasePath": "_content/TiklaYe_CQRS",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\fonts\\Platypi-BoldItalic.ttf",
+      "SourceId": "TiklaYe_CQRS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\",
+      "BasePath": "_content/TiklaYe_CQRS",
+      "RelativePath": "fonts/Platypi-BoldItalic.ttf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\fonts\\Platypi-BoldItalic.ttf"
     },
     {
       "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\images\\about.png",
