@@ -37,12 +37,6 @@ namespace TiklaYe_CQRS.Controllers
                 // Kullanıcı ID'sini almak için
                 var userId = HttpContext.Session.GetInt32("UserId");
 
-                if (userId == null)
-                {
-                    ModelState.AddModelError("", "Kullanıcı bilgileri alınamadı.");
-                    return View();
-                }
-
                 var user = await _context.Users.FindAsync(userId);
 
                 if (user == null)
