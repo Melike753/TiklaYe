@@ -20,6 +20,7 @@ namespace TiklaYe_CQRS.Controllers
         private readonly DeleteUserCommandHandler _deleteUserHandler;
         private readonly GetGroupedPurchasesQueryHandler _getGroupedPurchasesHandler;
         private readonly UpdateStatusCommandHandler _updateStatusHandler;
+        private readonly DeleteProductCommandHandler _deleteProductHandler;
         private readonly ApplicationDbContext _context;
         private readonly IMediator _mediator;
 
@@ -29,11 +30,12 @@ namespace TiklaYe_CQRS.Controllers
             GetPendingBusinessRequestsQueryHandler getPendingBusinessRequestsHandler,
             ApproveBusinessCommandHandler approveBusinessHandler,
             GetFeedbacksQueryHandler getFeedbacksQueryHandler,
-            GetAllUsersQueryHandler getAllUsersHandler, 
+            GetAllUsersQueryHandler getAllUsersHandler,
             DeleteUserCommandHandler deleteUserHandler,
-            GetGroupedPurchasesQueryHandler getGroupedPurchasesHandler, 
+            GetGroupedPurchasesQueryHandler getGroupedPurchasesHandler,
             UpdateStatusCommandHandler updateStatusHandler,
-            ApplicationDbContext context, 
+            DeleteProductCommandHandler deleteProductHandler,
+            ApplicationDbContext context,
             IMediator mediator)
         {
             _getSalesReportHandler = getSalesReportHandler;
@@ -44,6 +46,7 @@ namespace TiklaYe_CQRS.Controllers
             _deleteUserHandler = deleteUserHandler;
             _updateStatusHandler = updateStatusHandler;
             _getGroupedPurchasesHandler = getGroupedPurchasesHandler;
+            _deleteProductHandler = deleteProductHandler;
             _context = context;
             _mediator = mediator;
         }
@@ -200,6 +203,43 @@ namespace TiklaYe_CQRS.Controllers
                 .ToListAsync();
 
             return View(businesses);
+        }
+
+        // İşletmeleri listeler.
+        public async Task<IActionResult> ListBusinesses()
+        {
+            // Aktif olan işletmeleri veritabanından al
+            var businesses = await _context.BusinessOwners
+                .Where(b => b.IsActive)
+                .ToListAsync();
+
+            return View(businesses);
+        }
+
+        // Belirli bir işletmeye ait ürünleri görüntüler.
+        public async Task<IActionResult> ViewProducts(int businessOwnerId)
+        {
+            var products = await _context.PartnerProducts
+                .Where(p => p.BusinessOwnerId == businessOwnerId)
+                .Include(p => p.BusinessOwner)
+                .ToListAsync();
+
+            var businessOwner = await _context.BusinessOwners
+                .FirstOrDefaultAsync(b => b.BusinessOwnerId == businessOwnerId);
+
+            ViewBag.BusinessOwner = businessOwner;
+
+            return View(products);
+        }
+
+        // İşletmecilerin eklediği ürünü silebilir.
+        [HttpPost]
+        public async Task<IActionResult> DeletePartnerProduct(int id)
+        {
+            var command = new DeleteProductCommand { ProductId = id };
+            await _deleteProductHandler.Handle(command);
+
+            return RedirectToAction(nameof(ListBusinesses));
         }
     }
 }

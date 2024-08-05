@@ -1,6 +1,5 @@
 ﻿using TiklaYe_CQRS.Commands;
 using TiklaYe_CQRS.Data;
-using TiklaYe_CQRS.Models;
 
 namespace TiklaYe_CQRS.CommandHandlers
 {

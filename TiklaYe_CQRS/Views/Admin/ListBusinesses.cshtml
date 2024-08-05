@@ -1,0 +1,103 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.BusinessOwner>
+
+@{
+    ViewData["Title"] = "Restoranlar";
+    Layout = "_AdminLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Restoranlar - Tıkla Ye</title>
+    <link rel="shortcut icon" href="/images/logo1.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <script src="~/js/admin.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-left: 130px;
+            color: #dc3545;
+            font-size: 1.4rem;
+        }
+
+        .container {
+            display: flex;
+            margin: 20px;
+        }
+
+        .sidebar {
+            flex: 0 0 20%;
+            margin-right: 40px;
+            margin-left: 40px;
+        }
+
+        .content {
+            flex: 0 0 90%;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            background-color: #ffffff;
+            margin-bottom:30px;
+        }
+
+        .list-group-item {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .list-group-item:hover {
+                background-color: #dc3545;
+                color: #ffffff;
+                cursor: pointer;
+            }
+
+            .list-group-item a {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+                padding: 10px;
+            }
+
+                .list-group-item a:hover {
+                    text-decoration: none;
+                }
+
+        #products-list {
+            margin-top: 20px;
+            border: 1px solid #dee2e6;
+            background-color: #ffffff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>İşletmeler</h2>
+    <div class="container">
+        <div class="sidebar">
+            <ul class="list-group">
+                @foreach (var business in Model)
+                {
+                    <li class="list-group-item">
+                        <a asp-action="ViewProducts" asp-route-businessOwnerId="@business.BusinessOwnerId">@business.RestaurantName</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="content">
+            <div id="products-list">
+                <!-- Seçilen işletmenin ürünleri burada listelenecek -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

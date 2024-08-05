@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TiklaYe_CQRS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+76c28848f0f1d5932a651bd03ef9b06b10d003ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47db75fb23e51843ed15d7e18b1bda5df8f030be")]
 [assembly: System.Reflection.AssemblyProductAttribute("TiklaYe_CQRS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TiklaYe_CQRS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
