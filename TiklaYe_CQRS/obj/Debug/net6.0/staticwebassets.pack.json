@@ -493,6 +493,22 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\uploads\\TıklaYeFatura (2).pdf",
+      "PackagePath": "staticwebassets\\uploads\\TıklaYeFatura (2).pdf"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\uploads\\TıklaYeFatura (4).pdf",
+      "PackagePath": "staticwebassets\\uploads\\TıklaYeFatura (4).pdf"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\uploads\\TıklaYeFatura (5).pdf",
+      "PackagePath": "staticwebassets\\uploads\\TıklaYeFatura (5).pdf"
+    },
+    {
+      "Id": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\uploads\\Öğrenci ve Firma Bilgi Formu (2 Nüsha Olacak).docx",
+      "PackagePath": "staticwebassets\\uploads\\Öğrenci ve Firma Bilgi Formu (2 Nüsha Olacak).docx"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.TiklaYe_CQRS.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

@@ -28,5 +28,8 @@ namespace TiklaYe_CQRS.Commands
         [Required]
         [StringLength(100)]
         public string RestaurantName { get; set; }
+
+       public IFormFile PdfFile { get; set; }
+
     }
 }

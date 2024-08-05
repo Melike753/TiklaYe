@@ -1,0 +1,159 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.BusinessOwner>
+
+@{
+    ViewData["Title"] = "İşletmeler";
+    Layout = "_AdminLayout";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İşletmeler</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 1500px;
+            padding: 0 15px;
+        }
+
+        h1 {
+            color: #363636;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 30px;
+            border-bottom: 2px solid #4f4f4f;
+            padding-bottom: 10px;
+        }
+
+        .card {
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+        }
+
+        .card-body {
+            padding: 0;
+        }
+
+        .table {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .table th,
+            .table td {
+                padding: 12px 15px;
+                text-align: center;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .table th {
+                font-weight: bold;
+            }
+
+            .table thead th {
+                background-color: #343a40;
+                color: #ffffff;
+                font-weight: 600;
+            }
+
+            .table tbody tr:hover {
+                background-color: #f1f1f1;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+
+        .btn-primary {
+            background-color: #b5b5b5;
+            border-color: #696969;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #828282;
+                border-color: #4f4f4f;
+                color: #000;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Onaylanan İşletmeler</h1>
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>İşletme Adı</th>
+                                <th>Adı</th>
+                                <th>Soyadı</th>
+                                <th>E-posta</th>
+                                <th>Telefon</th>
+                                <th>Firma Bilgi</th>
+                                <th>Durum</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var business in Model)
+                            {
+                                <tr>
+                                    <td>@business.RestaurantName</td>
+                                    <td>@business.FirstName</td>
+                                    <td>@business.LastName</td>
+                                    <td>@business.Email</td>
+                                    <td>@business.PhoneNumber</td>
+                                    <td>
+                                        <a href="@Url.Content("~/uploads/" + System.IO.Path.GetFileName(business.PdfFilePath))" target="_blank">PDF'yi Görüntüle</a>
+                                    </td>
+                                    <td>@(business.IsActive ? "Aktif" : "Pasif")</td>
+                                    <td>
+                                        @if (business.IsActive)
+                                        {
+                                            <form method="post" asp-action="DeactivateBusiness" asp-route-id="@business.BusinessOwnerId">
+                                                <button type="submit" class="btn btn-primary">İşletmeyi Pasifleştir</button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form method="post" asp-action="ActivateBusiness" asp-route-id="@business.BusinessOwnerId">
+                                                <button type="submit" class="btn btn-primary">İşletmeyi Aktifleştir</button>
+                                            </form>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

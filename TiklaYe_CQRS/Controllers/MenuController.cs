@@ -21,11 +21,11 @@ namespace TiklaYe_CQRS.Controllers
         //    return View(products);
         //}
 
-        // Onaylanan işletmecilerin listesini getirir.
+        // Aktif işletmecilerin listesini getirir.
         public async Task<IActionResult> Restaurants()
         {
             var businessOwners = await _context.BusinessOwners
-                .Where(bo => bo.IsApproved)
+                .Where(bo => bo.IsActive)
                 .ToListAsync();
 
             return View(businessOwners);

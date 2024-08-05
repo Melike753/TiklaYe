@@ -34,5 +34,9 @@ namespace TiklaYe_CQRS.Models
         public bool IsApproved { get; set; }
 
         public DateTime? ApprovalDate { get; set; } = DateTime.UtcNow;
+
+        public string PdfFilePath { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

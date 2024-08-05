@@ -8,6 +8,7 @@ using TiklaYe_CQRS.Queries;
 
 namespace TiklaYe_CQRS.Controllers
 {
+    // BusinessController sınıfı, işletme işlemlerini gerçekleştirmek için kullanılır.
     public class BusinessController : Controller
     {
         private readonly IMediator _mediator;
@@ -31,7 +32,7 @@ namespace TiklaYe_CQRS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.Send(command);
+                var result = await _mediator.Send(command); // Komutu MediatR aracılığıyla işler.
                 if (result)
                 {
                     return RedirectToAction("Success");
@@ -39,7 +40,7 @@ namespace TiklaYe_CQRS.Controllers
 
                 ModelState.AddModelError("", "E-posta zaten kullanılıyor.");
             }
-            
+
             // Model doğrulama başarısızsa veya kayıt başarısızsa formu tekrar gösterir.
             return View(command);
         }
@@ -63,8 +64,8 @@ namespace TiklaYe_CQRS.Controllers
                 {
                     // Kullanıcı girişini gerçekleştirir.
                     await SignInUser(businessOwner.Email);
-                    HttpContext.Session.SetInt32("BusinessOwnerId", businessOwner.BusinessOwnerId);
-                    
+                    HttpContext.Session.SetInt32("BusinessOwnerId", businessOwner.BusinessOwnerId); // İşletme sahibi ID'sini oturuma kaydeder.
+
                     if (businessOwner.Email == "admintiklaye@gmail.com")
                     {
                         return RedirectToAction("Index", "Admin");

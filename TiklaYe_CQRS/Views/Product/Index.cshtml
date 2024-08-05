@@ -56,13 +56,13 @@
                 cursor: pointer;
                 transition: background-color 0.3s ease;
                 font-size: 1.2rem;
+                text-decoration: none;
+                display: inline-block; 
             }
 
                 .card-header .btn:hover {
                     background-color: #833baa;
                 }
-
-
 
         .card-block {
             padding: 1rem;
@@ -85,7 +85,7 @@
             .table tbody tr {
                 background-color: #fff;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Satırlara gölge ekledik */
-                line-height: 2.5; /* Satır yüksekliği */
+                line-height: 2; /* Satır yüksekliği */
                 text-align: center;
             }
 
@@ -94,11 +94,18 @@
                     transition: background-color 0.3s ease;
                 }
 
-        .btn-primary {
-            background-color: #550a7e;
+        .btn-primary, .btn-danger {
             color: white;
             border: none;
             transition: background-color 0.3s ease;
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            font-size: 1.05rem;
+            border-radius: 0.2rem;
+        }
+
+        .btn-primary {
+            background-color: #550a7e;
         }
 
             .btn-primary:hover {
@@ -107,27 +114,21 @@
 
         .btn-danger {
             background-color: #d40e00;
-            color: white;
-            border: none;
-            transition: background-color 0.3s ease;
         }
 
             .btn-danger:hover {
                 background-color: #ff1100;
             }
 
-        .btn-sm {
-            padding: 0.25rem 0.5rem;
-            font-size: 1.05rem;
-            border-radius: 0.2rem;
-        }
-
-
         .table img.img-thumbnail {
             border-radius: 5px;
             vertical-align: middle; /* Resmi dikey olarak ortala */
             padding-top: 10px; /* Üstten boşluk */
             padding-bottom: 10px; /* Altından boşluk */
+        }
+
+        form {
+            display: inline-block; /* Formu butonlar gibi aynı hizaya getirmek için */
         }
 
     </style>
@@ -150,7 +151,7 @@
     <div class="card">
         <div class="card-header">
             <h4>Ürün Listesi</h4>
-            <a class="btn btn-primary float-right" asp-action="Create">Yeni Ürün Ekle</a>
+            <a class="btn btn-primary" asp-action="Create">Yeni Ürün Ekle</a>
         </div>
         <div class="card-block">
             <div class="row">
@@ -188,10 +189,9 @@
                                 <td>@product.Category?.Name</td> <!-- Kategori Adı -->
                                 <td>@(product.IsActive ? "Aktif" : "Pasif")</td>
                                 <td>
-                                    <a href="@Url.Action("Edit", new { id = product.ProductId })" class="btn btn-primary btn-sm">Düzenle</a>
-                                     <form asp-action="Delete" method="post" style="display:inline;" onsubmit="return confirm('Bu ürünü silmek istediğinize emin misiniz?');">
-                                        <input type="hidden" name="id" value="@product.ProductId" />
-                                        <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                                    <a href="@Url.Action("Edit", new { id = product.ProductId })" class="btn btn-primary">Düzenle</a>
+                                    <form asp-action="Delete" method="post" asp-route-id="@product.ProductId" onsubmit="return confirm('Bu ürünü silmek istediğinize emin misiniz?');">
+                                        <button type="submit" class="btn btn-danger">Sil</button>
                                     </form>
                                 </td>
                             </tr>

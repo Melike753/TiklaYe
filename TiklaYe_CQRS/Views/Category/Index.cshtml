@@ -26,6 +26,7 @@
             overflow: hidden;
             margin-bottom: 1.5rem;
             margin-top: 50px; /* Üstten boşluk ekledik */
+            padding: 20px;
         }
 
         .card-header {
@@ -79,7 +80,7 @@
             .table tbody tr {
                 background-color: #fff;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Satırlara gölge ekledik */
-                line-height: 4; /* Satır yüksekliği */
+                line-height: 2; /* Satır yüksekliği */
                 text-align: center;
             }
 
@@ -93,11 +94,19 @@
                 border-radius: 5px;
             }
 
-        .btn-primary {
-            background-color: #000099;
+        .btn-primary, .btn-danger {
             color: white;
             border: none;
             transition: background-color 0.3s ease;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #000099;
         }
 
             .btn-primary:hover {
@@ -106,9 +115,6 @@
 
         .btn-danger {
             background-color: #d40e00;
-            color: white;
-            border: none;
-            transition: background-color 0.3s ease;
         }
 
             .btn-danger:hover {
@@ -127,55 +133,45 @@
             padding-top: 10px; /* Üstten boşluk */
             padding-bottom: 10px; /* Altından boşluk */
         }
-
     </style>
 }
 
 <div class="container">
-    <div class="pcoded-inner-content pt-0">
-        <div class="main-body">
-            <div class="page-wrapper">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h4>Kategoriler</h4>
+                <a class="btn btn-primary float-right" asp-action="Create">Yeni Kategori Ekle</a>
+            </div>
+            <div class="card-block">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Kategoriler</h4>
-                                <a class="btn btn-primary float-right" asp-action="Create">Yeni Kategori Ekle</a>
-                            </div>
-                            <div class="card-block">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Kategori Adı</th>
-                                                    <th>Görsel</th>
-                                                    <th>Durum</th>
-                                                    <th>İşlemler</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var category in Model)
-                                                {
-                                                    <tr>
-                                                        <td>@category.Name</td>
-                                                        <td><img src="@Url.Content(category.ImageUrl)" alt="Görsel" class="img-thumbnail" style="width: 80px;" /></td>
-                                                        <td>@(category.IsActive ? "Aktif" : "Pasif")</td>
-                                                        <td>
-                                                            <a href="@Url.Action("Edit", new { id = category.CategoryId })" class="btn btn-primary btn-sm">Düzenle</a>
-                                                            <form asp-action="Delete" method="post" style="display:inline;" onsubmit="return confirm('Bu kategoriyi silmek istediğinize emin misiniz?');">
-                                                                <input type="hidden" name="id" value="@category.CategoryId" />
-                                                                <button type="submit" class="btn btn-danger btn-sm">Sil</button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Kategori Adı</th>
+                                    <th>Görsel</th>
+                                    <th>Durum</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var category in Model)
+                                {
+                                    <tr>
+                                        <td>@category.Name</td>
+                                        <td><img src="@Url.Content(category.ImageUrl)" alt="Görsel" class="img-thumbnail" style="width: 80px;" /></td>
+                                        <td>@(category.IsActive ? "Aktif" : "Pasif")</td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", new { id = category.CategoryId })" class="btn btn-primary btn-sm">Düzenle</a>
+                                            <form asp-action="Delete" asp-route-id="@category.CategoryId" method="post" style="display:inline;" onsubmit="return confirm('Bu kategoriyi silmek istediğinize emin misiniz?');">
+                                                <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

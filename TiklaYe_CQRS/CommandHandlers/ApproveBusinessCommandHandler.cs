@@ -1,10 +1,11 @@
-﻿using TiklaYe_CQRS.Commands;
+﻿using MediatR;  // MediatR kütüphanesi, CQRS patterninde kullanılan istek ve işlem sınıflarını yönetmek için kullanılır.
+using Microsoft.EntityFrameworkCore;
+using TiklaYe_CQRS.Commands;
 using TiklaYe_CQRS.Data;
 
 namespace TiklaYe_CQRS.CommandHandlers
 {
-    // Bir işletme sahibinin onaylanmasını işlemek için kullanılır.
-    public class ApproveBusinessCommandHandler
+    public class ApproveBusinessCommandHandler : IRequestHandler<ApproveBusinessCommand, bool>
     {
         private readonly ApplicationDbContext _context;
 
@@ -13,16 +14,23 @@ namespace TiklaYe_CQRS.CommandHandlers
             _context = context;
         }
 
-        public async Task Handle(ApproveBusinessCommand command)
+        public async Task<bool> Handle(ApproveBusinessCommand request, CancellationToken cancellationToken)
         {
-            var businessOwner = await _context.BusinessOwners.FindAsync(command.Id);
+            // 'BusinessOwners' tablosunda 'BusinessOwnerId' ile eşleşen iş sahibi kaydını bulur.
+            var businessOwner = await _context.BusinessOwners.FirstOrDefaultAsync(b => b.BusinessOwnerId == request.BusinessOwnerId);
+
+            // Eğer iş sahibi kaydı bulunursa, onay işlemini gerçekleştirir.
             if (businessOwner != null)
             {
                 businessOwner.IsApproved = true;
-                businessOwner.ApprovalDate = DateTime.Now;
-                _context.Update(businessOwner);
-                await _context.SaveChangesAsync();
+                businessOwner.IsActive = true; // İşletmeyi aktif hale getir.
+                businessOwner.ApprovalDate = DateTime.UtcNow;
+                _context.BusinessOwners.Update(businessOwner);
+                await _context.SaveChangesAsync(cancellationToken);
+
+                return true;
             }
+            return false;
         }
     }
 }

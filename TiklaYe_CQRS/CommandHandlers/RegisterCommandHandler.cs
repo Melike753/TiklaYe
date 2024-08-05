@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using MediatR;  // MediatR kütüphanesi, CQRS patterninde kullanılan istek ve işlem sınıflarını yönetmek için kullanılır.
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
@@ -27,6 +27,15 @@ namespace TiklaYe_CQRS.CommandHandlers
                 return false; // E-posta adresi zaten kullanılıyorsa false döner.
             }
 
+            // PDF dosyasını kaydedeceği dosya yolunu belirler.
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", request.PdfFile.FileName);
+
+            // PDF dosyasını belirtilen dosya yoluna kaydeder.
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await request.PdfFile.CopyToAsync(stream);
+            }
+
             // Yeni işletmeci oluşturur.
             var businessOwner = new BusinessOwner
             {
@@ -34,8 +43,9 @@ namespace TiklaYe_CQRS.CommandHandlers
                 LastName = request.LastName,
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber,
-                PasswordHash = PasswordHasher.HashPassword(request.Password), // Parolayı hash'le
+                PasswordHash = PasswordHasher.HashPassword(request.Password), // Parolayı hash'ler.
                 RestaurantName = request.RestaurantName,
+                PdfFilePath = filePath,
                 IsApproved = false // Varsayılan olarak onaylanmamış
             };
 
@@ -43,7 +53,7 @@ namespace TiklaYe_CQRS.CommandHandlers
             _context.BusinessOwners.Add(businessOwner);
             await _context.SaveChangesAsync(cancellationToken); // Değişiklikleri kaydeder
             return true; // İşlem başarılıysa true döner
-        } 
+        }
     }
 
     // Parola hashleme işlemleri için yardımcı sınıf

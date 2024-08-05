@@ -2,7 +2,7 @@
 
 namespace TiklaYe_CQRS.Commands
 {
-    public class ApproveBusinessCommand : IRequest<bool>
+    public class DeactivateBusinessCommand : IRequest<bool>
     {
         public int BusinessOwnerId { get; set; }
     }

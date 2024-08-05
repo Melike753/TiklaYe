@@ -14,7 +14,7 @@
     }
 
     .container {
-        margin: 0 auto;
+        margin: 20px auto;
         max-width: 1500px;
         padding: 0 15px;
     }
@@ -106,6 +106,8 @@
                         <th>Soyadı</th>
                         <th>E-posta</th>
                         <th>Telefon Numarası</th>
+                        <th>Restoran Adı</th>
+                        <th>Firma Bilgi</th>
                         <th>İstek</th>
                     </tr>
                 </thead>
@@ -117,6 +119,10 @@
                             <td>@business.LastName</td>
                             <td>@business.Email</td>
                             <td>@business.PhoneNumber</td>
+                            <td>@business.RestaurantName</td>
+                            <td>
+                                <a href="@Url.Content("~/uploads/" + System.IO.Path.GetFileName(business.PdfFilePath))" target="_blank">PDF'yi Görüntüle</a>
+                            </td>
                             <td>
                                 <form asp-action="ApproveBusiness" asp-controller="Admin" method="post">
                                     <input type="hidden" name="id" value="@business.BusinessOwnerId" />
