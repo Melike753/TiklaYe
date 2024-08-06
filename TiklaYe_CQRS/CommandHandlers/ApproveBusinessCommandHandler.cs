@@ -2,16 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 using TiklaYe_CQRS.Commands;
 using TiklaYe_CQRS.Data;
+using TiklaYe_CQRS.Services;
 
 namespace TiklaYe_CQRS.CommandHandlers
 {
     public class ApproveBusinessCommandHandler : IRequestHandler<ApproveBusinessCommand, bool>
     {
         private readonly ApplicationDbContext _context;
+        private readonly EmailService _emailService;
 
-        public ApproveBusinessCommandHandler(ApplicationDbContext context)
+        public ApproveBusinessCommandHandler(ApplicationDbContext context, EmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
 
         public async Task<bool> Handle(ApproveBusinessCommand request, CancellationToken cancellationToken)
@@ -27,6 +30,11 @@ namespace TiklaYe_CQRS.CommandHandlers
                 businessOwner.ApprovalDate = DateTime.UtcNow;
                 _context.BusinessOwners.Update(businessOwner);
                 await _context.SaveChangesAsync(cancellationToken);
+
+                // E-posta gönderme işlemi
+                var emailSubject = "Hesabınız Onaylandı!";
+                var emailBody = "Hesabınız TıklaYe tarafından onaylanmıştır! Aramıza hoş geldiniz. Sistemimize giriş yapabilirsiniz.";
+                await _emailService.SendEmailAsync(businessOwner.Email, emailSubject, emailBody);
 
                 return true;
             }

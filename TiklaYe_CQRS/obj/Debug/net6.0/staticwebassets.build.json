@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ySxMhwPWG7tVOtSXJ+C9KYDNHMDN5DU2XWvJmPaXG8o=",
+  "Hash": "gid5WLUYsZkvzn5w2/el8ZMZfF8NCKeyfhyQ1yDLKzU=",
   "Source": "TiklaYe_CQRS",
   "BasePath": "_content/TiklaYe_CQRS",
   "Mode": "Default",
@@ -2390,6 +2390,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\uploads\\TıklaYeFatura (4).pdf",
+      "SourceId": "TiklaYe_CQRS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\",
+      "BasePath": "_content/TiklaYe_CQRS",
+      "RelativePath": "uploads/TıklaYeFatura (4).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\TıklaYeFatura (4).pdf"
+    },
+    {
+      "Identity": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\uploads\\TıklaYeFatura (5).pdf",
+      "SourceId": "TiklaYe_CQRS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Melike\\Documents\\GitHub\\TiklaYe\\TiklaYe_CQRS\\wwwroot\\",
+      "BasePath": "_content/TiklaYe_CQRS",
+      "RelativePath": "uploads/TıklaYeFatura (5).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\TıklaYeFatura (5).pdf"
     }
   ]
 }

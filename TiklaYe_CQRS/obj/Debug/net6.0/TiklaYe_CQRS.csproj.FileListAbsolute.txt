@@ -595,3 +595,15 @@ C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\obj\Debug\net6.0\refint\Ti
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\obj\Debug\net6.0\TiklaYe_CQRS.pdb
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\obj\Debug\net6.0\TiklaYe_CQRS.genruntimeconfig.cache
 C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\obj\Debug\net6.0\ref\TiklaYe_CQRS.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\SendGrid.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\StarkbankEcdsa.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\MailKit.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\MimeKit.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\NETCore.MailKit.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\System.Formats.Asn1.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Melike\Documents\GitHub\TiklaYe\TiklaYe_CQRS\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll

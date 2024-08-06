@@ -74,6 +74,7 @@ builder.Services.AddScoped<GetUserPurchasesQueryHandler>();
 builder.Services.AddScoped<UserExistsQueryHandler>();
 builder.Services.AddScoped<ICartQueryService, CartQueryService>();
 builder.Services.AddScoped<ProductQueryService>();
+builder.Services.AddTransient<EmailService>();
 
 // Add authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
