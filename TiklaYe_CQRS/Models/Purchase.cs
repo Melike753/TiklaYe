@@ -10,8 +10,9 @@
         public decimal UnitPrice { get; set; }
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
-        public string Status { get; set; } = "Sipariş Hazırlanıyor"; // Varsayılan değer
-
+        public string Status { get; set; } 
         public User User { get; set; }
+        public int BusinessOwnerId { get; set; }
+        public BusinessOwner BusinessOwner { get; set; }
     }
 }

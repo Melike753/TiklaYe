@@ -72,7 +72,7 @@ namespace TiklaYe_CQRS.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "PartnerProduct");
+                        return RedirectToAction("RestaurantRevenue", "Business");
                     }
                 }
                 else
@@ -107,6 +107,27 @@ namespace TiklaYe_CQRS.Controllers
             };
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RestaurantRevenue(DateTime? startDate, DateTime? endDate)
+        {
+            // İşletmeci ID'sini oturumdan al.
+            var businessOwnerId = HttpContext.Session.GetInt32("BusinessOwnerId");
+            if (businessOwnerId == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var query = new GetRestaurantRevenueQuery
+            {
+                BusinessOwnerId = businessOwnerId.Value,
+                StartDate = startDate,
+                EndDate = endDate
+            };
+
+            var salesReport = await _mediator.Send(query);
+            return View(salesReport);
         }
     }
 }

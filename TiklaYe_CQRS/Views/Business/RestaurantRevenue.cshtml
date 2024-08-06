@@ -1,0 +1,231 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.RestaurantRevenueViewModel>
+
+@{
+    ViewData["Title"] = "Satış Raporu";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Satış Raporu - TıklaYe</title>
+    <link rel="shortcut icon" href="/images/logo1.png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 30px;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 0 15px;
+        }
+
+        h1 {
+            color: #363636;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 30px;
+            border-bottom: 2px solid #4f4f4f;
+            padding-bottom: 20px;
+        }
+
+        h3 {
+            color: #363636;
+            margin-top: 30px;
+            font-weight: 750;
+            display: inline-block;
+        }
+
+        .card {
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+        }
+
+        .card-body {
+            padding: 0;
+        }
+
+        .table {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .table th,
+            .table td {
+                padding: 12px 15px;
+                text-align: center;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .table th {
+                font-weight: bold;
+            }
+
+            .table thead th {
+                background-color: #343a40;
+                color: #ffffff;
+                font-weight: 600;
+            }
+
+            .table tbody tr:hover {
+                background-color: #f1f1f1;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+
+            .table tbody .user {
+                font-weight: bold;
+            }
+
+        .table-product {
+            margin-top: 5px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            background-color: #b5b5b5;
+            border-color: #696969;
+            color: #000;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin-top: 36px;
+            display: block;
+            width: 60%;
+            margin-left: 30px;
+        }
+
+            .btn:hover {
+                background-color: #828282;
+                border-color: #4f4f4f;
+                color: #000;
+            }
+
+        .form-inline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .form-inline .form-group {
+                flex: 1;
+                margin-right: 20px;
+                margin-top: 15px;
+            }
+
+                .form-inline .form-group:last-child {
+                    margin-right: 10px;
+                }
+
+            .form-inline .form-control {
+                width: 100%;
+                padding: 8px;
+                font-size: 16px;
+            }
+
+        .btn-sm {
+            width: 16%;
+            text-align: center;
+            margin-right: 20px;
+            margin-top: 30px;
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Satış Raporu</h1>
+        <div class="card">
+            <div class="card-body">
+                <form class="form-inline" method="get" action="@Url.Action("RestaurantRevenue", "Business")">
+                    <div class="form-group">
+                        <label for="startDate">Başlangıç Tarihi:</label>
+                        <input type="date" name="startDate" id="startDate" class="form-control" value="@Context.Request.Query["startDate"]" />
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">Bitiş Tarihi:</label>
+                        <input type="date" name="endDate" id="endDate" class="form-control" value="@Context.Request.Query["endDate"]" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrele</button>
+                </form>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Kullanıcı ID</th>
+                            <th>Kullanıcı Adı</th>
+                            <th>Kullanıcı Email</th>
+                            <th>Toplam Sipariş Sayısı</th>
+                            <th>Toplam Tutar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="user">
+                                <td>@item.UserId</td>
+                                <td>@item.Name</td>
+                                <td>@item.Email</td>
+                                <td>@item.TotalOrders</td>
+                                <td>@item.TotalAmount.ToString("C")</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <table class="table table-product">
+                                        <thead>
+                                            <tr>
+                                                <th>Ürün Adı</th>
+                                                <th>Birim Fiyatı</th>
+                                                <th>Adet</th>
+                                                <th>Toplam Fiyat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var sale in item.Sales)
+                                            {
+                                                @foreach (var purchaseItem in sale.PurchasedItems)
+                                                {
+                                                    <tr>
+                                                        <td>@purchaseItem.ProductName</td>
+                                                        <td>@purchaseItem.UnitPrice.ToString("C")</td>
+                                                        <td>@purchaseItem.Quantity</td>
+                                                        <td>@purchaseItem.TotalPrice.ToString("C")</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div>
+                    <h3>Toplam Gelir: @Model.Sum(x => x.TotalAmount).ToString("C")</h3>
+                    <a class="btn btn-sm" href="@Url.Action("Index", "PartnerProduct")">Ürün İşlemleri</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

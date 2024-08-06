@@ -33,7 +33,8 @@ namespace TiklaYe_CQRS.CommandHandlers
                     UnitPrice = item.Price,
                     Quantity = item.Quantity,
                     TotalPrice = item.TotalPrice,
-                    Status = "Hazırlanıyor"
+                    Status = "Sipariş Hazırlanıyor",
+                    BusinessOwnerId = item.BusinessOwnerId
                 };
 
                 _context.Purchases.Add(purchase);

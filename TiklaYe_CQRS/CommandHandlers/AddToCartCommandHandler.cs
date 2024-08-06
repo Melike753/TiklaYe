@@ -5,6 +5,7 @@ using TiklaYe_CQRS.Models;
 
 namespace TiklaYe_CQRS.CommandHandlers
 {
+    // Sepete ürün eklemek için kullanılır.
     public class AddToCartCommandHandler
     {
         private readonly ApplicationDbContext _context;
@@ -42,10 +43,12 @@ namespace TiklaYe_CQRS.CommandHandlers
 
             if (userCartItem != null)
             {
+                // Ürün zaten sepette var, miktarı artır
                 userCartItem.Quantity += command.Quantity;
             }
             else
             {
+                // Ürün sepette yok, yeni ürün ekle
                 var newCartItem = new CartItem
                 {
                     UserId = command.UserId,
@@ -54,7 +57,7 @@ namespace TiklaYe_CQRS.CommandHandlers
                     ImageUrl = command.ImageUrl,
                     Price = command.Price,
                     Quantity = command.Quantity,
-                    BusinessOwnerId = (int)product.BusinessOwnerId // Restoran ID'sini ekleyin
+                    BusinessOwnerId = (int)product.BusinessOwnerId
                 };
                 await _context.CartItems.AddAsync(newCartItem);
             }

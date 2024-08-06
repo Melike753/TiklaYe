@@ -41,7 +41,7 @@
         .card-header {
             background-color: #36104b;
             color: white;
-            padding: 1.5rem;
+            padding: 1.3rem;
             border-bottom: 1px solid #e5e5e5;
             display: flex;
             justify-content: space-between;
@@ -51,8 +51,7 @@
         }
 
             .card-header h4 {
-                margin: 0;
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
 
             .card-header .btn {
@@ -70,8 +69,6 @@
                     background-color: #833baa;
                 }
 
-
-
         .card-block {
             padding: 1rem;
         }
@@ -88,6 +85,7 @@
                 border-bottom: 2px solid #dee2e6;
                 text-align: center;
                 font-size: 1.1rem;
+                padding:1.2rem;
             }
 
             .table tbody tr {
@@ -107,6 +105,7 @@
             color: white;
             border: none;
             transition: background-color 0.3s ease;
+            text-decoration: none;
         }
 
             .btn-primary:hover {
@@ -130,7 +129,6 @@
             border-radius: 0.2rem;
         }
 
-
         .table img.img-thumbnail {
             border-radius: 5px;
             vertical-align: middle; /* Resmi dikey olarak ortala */
@@ -146,7 +144,10 @@
         <div class="card">
             <div class="card-header">
                 <h4>Ürün Listesi</h4>
-                <a class="btn btn-primary float-right" href="@Url.Action("AddProduct", "PartnerProduct")">Yeni Ürün Ekle</a>
+                <div>
+                    <a class="btn btn-primary float-right" href="@Url.Action("RestaurantRevenue", "Business")">Satış Raporu</a>
+                    <a class="btn btn-primary float-right" href="@Url.Action("AddProduct", "PartnerProduct")">Yeni Ürün Ekle</a>
+                </div>
             </div>
             <div class="card-block">
                 <div class="row">
