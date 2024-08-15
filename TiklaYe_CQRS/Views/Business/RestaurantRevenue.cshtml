@@ -1,0 +1,86 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.RestaurantRevenueViewModel>
+
+@{
+    ViewData["Title"] = "Satış Raporu";
+    Layout = "_PageLayout";
+}
+
+<div class="sales-report">
+    <div class="sales-report-container">
+        <h1 class="sales-report-title">Satış Raporu</h1>
+        <div class="sales-report-card">
+            <div class="sales-report-card-body">
+                <form class="sales-report-form-inline" method="get" action="@Url.Action("RestaurantRevenue", "Business")">
+                    <div class="form-group">
+                        <label for="startDate">Başlangıç Tarihi:</label>
+                        <input type="date" name="startDate" id="startDate" class="form-control" value="@Context.Request.Query["startDate"]" />
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">Bitiş Tarihi:</label>
+                        <input type="date" name="endDate" id="endDate" class="form-control" value="@Context.Request.Query["endDate"]" />
+                    </div>
+                    <button type="submit" class="sales-report-btn">Filtrele</button>
+                </form>
+
+                <table class="sales-report-table">
+                    <thead>
+                        <tr>
+                            <th>Kullanıcı ID</th>
+                            <th>Kullanıcı Adı</th>
+                            <th>Kullanıcı Email</th>
+                            <th>Toplam Sipariş Sayısı</th>
+                            <th>Toplam Tutar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="user">
+                                <td>@item.UserId</td>
+                                <td>@item.Name</td>
+                                <td>@item.Email</td>
+                                <td>@item.TotalOrders</td>
+                                <td>@item.TotalAmount.ToString("C")</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <table class="sales-report-table-product">
+                                        <thead>
+                                            <tr>
+                                                <th>Ürün Adı</th>
+                                                <th>Birim Fiyatı</th>
+                                                <th>Adet</th>
+                                                <th>Toplam Fiyat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var sale in item.Sales)
+                                            {
+                                                @foreach (var purchaseItem in sale.PurchasedItems)
+                                                {
+                                                    <tr>
+                                                        <td>@purchaseItem.ProductName</td>
+                                                        <td>@purchaseItem.UnitPrice.ToString("C")</td>
+                                                        <td>@purchaseItem.Quantity</td>
+                                                        <td>@purchaseItem.TotalPrice.ToString("C")</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="sales-report-form-inline">
+                    <h3 class="sales-report-subtitle">Toplam Gelir: @Model.Sum(x => x.TotalAmount).ToString("C")</h3>
+                    <div class="sales-report-btn-container">
+                        <a class="sales-report-btn" href="@Url.Action("BusinessProfile", "Business")">İşletmeci Bilgileri</a>
+                        <a class="sales-report-btn" href="@Url.Action("Index", "PartnerProduct")">Ürün İşlemleri</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

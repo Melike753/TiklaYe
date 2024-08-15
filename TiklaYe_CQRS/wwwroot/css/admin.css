@@ -1,0 +1,405 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Admin Dashboard */
+
+.admin-dashboard {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f5f7;
+    font-size: 16px;
+}
+
+.admin-flex {
+    display: flex;
+}
+
+.admin-sidebar {
+    width: 300px;
+    background: #111827;
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-sidebar-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.admin-sidebar-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.sidebar-link.active {
+    background: #3b3f5c;
+    color: #ffffff;
+}
+
+.admin-sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-item {
+    margin-bottom: 10px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #d1d5db;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+    .sidebar-link:hover {
+        background: #374151;
+        color: #ffffff;
+        transform: scale(1.02);
+    }
+
+    .sidebar-link i {
+        font-size: 1.4rem;
+        margin-right: 10px;
+    }
+
+    .sidebar-link span {
+        font-size: 1rem;
+    }
+
+.admin-header {
+    background: #111827;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.restaurant-title {
+    font-family: 'Times New Roman';
+    font-size: 1.5rem;
+    color: #111827;
+}
+
+.admin-header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.admin-main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Admin Anasayfa */
+
+.custom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.custom-cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.custom-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 230px;
+    padding: 20px;
+    margin: 15px;
+    flex-grow: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+    .custom-card:hover {
+        transform: scale(1.05);
+    }
+
+.custom-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+    .custom-icon-wrapper.blue {
+        background-color: #e0f7fa;
+        color: #0288d1;
+    }
+
+    .custom-icon-wrapper.orange {
+        background-color: #ffe0b2;
+        color: #fb8c00;
+    }
+
+    .custom-icon-wrapper.green {
+        background-color: #c8e6c9;
+        color: #388e3c;
+    }
+
+.custom-card-content {
+    flex-grow: 1;
+}
+
+.custom-card-title {
+    margin: 0;
+    margin-top: 25px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.custom-card-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #828282;
+    text-decoration: none;
+}
+
+    .custom-card-link i {
+        margin-right: 5px;
+    }
+
+    .custom-card-link:hover {
+        text-decoration: none;
+        color: #363636;
+    }
+
+/* Bitiş */
+
+/* Admin Diğer Sayfaları */
+
+.admin-panel {
+    padding: 30px;
+    max-width: 86%;
+    margin: 30px auto;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-collapse: collapse;
+}
+
+    .table th, .table td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #111827;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .table tr {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .table tr:hover {
+            background-color: #f1f5f9;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.btn-secondary {
+    background-color: #374c62;
+    color: #fff;
+}
+
+    .btn-secondary:hover {
+        background-color: #1a252f;
+    }
+
+.admin-form-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.2rem;
+}
+
+.admin-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1.2rem;
+}
+
+    .admin-form-group label {
+        margin-bottom: 0.6rem;
+        font-weight: bold;
+    }
+
+    .admin-form-group input {
+        padding: 8px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 180px;
+    }
+
+.admin-form-inline .btn {
+    margin-right: auto;
+    padding: 12px 24px;
+}
+
+.admin-form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    max-width: 190px;
+}
+
+    .admin-form-control:focus {
+        border-color: #80bdff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+    }
+
+.card-body h3 {
+    font-size: 20px;
+    margin-top: 35px;
+}
+
+.admin-panel .card-body-list {
+    display: flex;
+    padding: 20px;
+}
+
+.business-sidebar {
+    width: 250px;
+    background-color: #1b2a4e;
+    padding: 15px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+    .business-sidebar .list-group-item {
+        background-color: #1b2a4e;
+        color: #ffffff;
+        border: none;
+        margin-bottom: 10px;
+        padding: 10px 15px;
+        border-radius: 4px;
+    }
+
+        .business-sidebar .list-group-item:hover {
+            background-color: #253a70;
+            cursor: pointer;
+        }
+
+        .business-sidebar .list-group-item a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+.product-content {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.purchased-products ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+.img-thumbnail {
+    width: 70px;
+    height: auto;
+}
+
+#products-list {
+    flex-wrap: wrap;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+}
+
+/* Admin  Bitiş */

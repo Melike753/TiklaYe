@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+    Layout = "_AdminLayout";
+}
+
+<div class="custom-body">
+    <div class="custom-container">
+        <!-- Cards -->
+        <div class="custom-cards-wrapper">
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper blue">
+                    <i class="material-icons">view_list</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">Kategoriler</p>
+                    <a class="custom-card-link" asp-controller="Category" asp-action="Index">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper orange">
+                    <i class="material-icons">fastfood</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">Ürünler</p>
+                    <a class="custom-card-link" asp-controller="Product" asp-action="Index">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper green">
+                    <i class="material-icons">local_shipping</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">Ürün Teslimat Durumu</p>
+                    <a class="custom-card-link" asp-controller="Admin" asp-action="Status">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper blue">
+                    <i class="material-icons">notifications_active</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">Geri Bildirimler</p>
+                    <a class="custom-card-link" asp-controller="Admin" asp-action="AdminFeedback">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper orange">
+                    <i class="material-icons">people</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">Kullanıcılar</p>
+                    <a class="custom-card-link" asp-controller="Admin" asp-action="User">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper green">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">Toplam Kazanç</p>
+                    <a class="custom-card-link" asp-controller="Admin" asp-action="SalesReport">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper blue">
+                    <i class="material-icons">hourglass_empty</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">Onay İşlemleri</p>
+                    <a class="custom-card-link" asp-controller="Admin" asp-action="BusinessRequests">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper orange">
+                    <i class="material-icons">location_city</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">İşletmeler</p>
+                    <a class="custom-card-link" asp-controller="Admin" asp-action="ViewBusinesses">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="custom-card">
+                <div class="custom-icon-wrapper green">
+                    <i class="material-icons">restaurant_menu</i>
+                </div>
+                <div class="custom-card-content">
+                    <p class="custom-card-title">Restoranlar</p>
+                    <a class="custom-card-link" asp-controller="Admin" asp-action="ListBusinesses">
+                        <i class="material-icons">visibility</i> Detayları Göster
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

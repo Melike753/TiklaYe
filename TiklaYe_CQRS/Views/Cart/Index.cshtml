@@ -1,0 +1,79 @@
+﻿@model List<TiklaYe_CQRS.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Sepetim";
+    Layout = "_PageLayout"; 
+}
+
+<div class="cart-body">
+    <div class="cart-container">
+        <section class="cart">
+            <div class="cart-card">
+                <div class="cart-information">
+                    <div>
+                        <h1 class="cart-title">Sepetim</h1>
+                    </div>
+                    <!-- Hataları görüntülemek için -->
+                    @if (ViewData.ModelState != null && ViewData.ModelState.Any(m => m.Value.Errors.Count > 0))
+                    {
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                {
+                                    <li>@error.ErrorMessage</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    else if (Model != null && Model.Any())
+                    {
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Ürün</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Fiyat</th>
+                                    <th>Miktar</th>
+                                    <th>Toplam</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@item.ImageUrl" alt="@item.Name" width="60" />
+                                        </td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Price.ToString("C")</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.TotalPrice.ToString("C")</td>
+                                        <td>
+                                            <form asp-action="RemoveFromCart" method="post">
+                                                <input type="hidden" name="productId" value="@item.ProductId" />
+                                                <button type="submit" class="btn btn-danger">Sepetten Çıkar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="cart-total-price">
+                            Toplam: @Model.Sum(i => i.TotalPrice).ToString("C")
+                        </div>
+                        <div>
+                            <a asp-controller="Menu" asp-action="Restaurants" class="btn btn-primary">Alışverişe Devam Et</a>
+                            <a asp-controller="Order" asp-action="Payment" class="btn btn-primary">Sepeti Onayla</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">Sepetinizde ürün bulunmamaktadır.</div>
+                        <a asp-controller="Menu" asp-action="Restaurants" class="btn btn-orientation">Alışverişe Başla</a>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

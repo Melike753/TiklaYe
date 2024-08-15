@@ -1,0 +1,91 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.Product>
+
+@{
+    ViewData["Title"] = "Ürün Listesi";
+    Layout = "_AdminLayout";
+}
+
+@{
+    if (!ViewData.ModelState.IsValid)
+    {
+        foreach (var state in ViewData.ModelState)
+        {
+            foreach (var error in state.Value.Errors)
+            {
+                <div class="text-danger">@error.ErrorMessage</div>
+            }
+        }
+    }
+}
+
+<div class="product-list-main-container">
+    <div class="product-list-card-container">
+        <div class="product-list-card-header-container">
+            <h4 class="product-list-card-header-title">Ürün Listesi</h4>
+            <a class="product-list-action-button-primary" asp-action="Create">Yeni Ürün Ekle</a>
+        </div>
+        <div class="product-list-card-content">
+            <div class="row">
+                <table class="product-list-table">
+                    <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Açıklama</th>
+                            <th>Fiyat</th>
+                            <th>Stok</th>
+                            <th>Görsel</th>
+                            <th>Kategori</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.Name</td>
+                                <td>@product.Description</td>
+                                <td>@product.Price</td>
+                                <td>@product.Quantity</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                                    {
+                                        <img src="@Url.Content(product.ImageUrl)" alt="Görsel" class="product-list-image-thumbnail" style="width: 70px;" />
+                                    }
+                                    else
+                                    {
+                                        <span>Yok</span>
+                                    }
+                                </td>
+                                <td>@product.Category?.Name</td> <!-- Kategori Adı -->
+                                <td>@(product.IsActive ? "Aktif" : "Pasif")</td>
+                                <td class="product-list-row-actions">
+                                    <a href="@Url.Action("Edit", new { id = product.ProductId })" class="product-list-action-button-primary">Düzenle</a>
+                                    <form asp-action="Delete" method="post" asp-route-id="@product.ProductId" onsubmit="return confirm('Bu ürünü silmek istediğinize emin misiniz?');">
+                                        <button type="submit" class="product-list-action-button-danger">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('ProductImage').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.Purchase>
+
+@{
+    ViewData["Title"] = "Satın Alma Geçmişi";
+    Layout = "_PageLayout";
+}
+
+<div class="purchase-history-body">
+    <div class="purchase-history-container">
+        <h2 class="purchase-history-title">Satın Alma Geçmişi</h2>
+        <div class="purchase-history-card">
+            <div class="purchase-history-card-body">
+                <table class="purchase-history-table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Sipariş Numarası</th>
+                            <th>Sipariş Tarihi</th>
+                            <th>Ürün Adı</th>
+                            <th>Birim Fiyatı</th>
+                            <th>Miktar</th>
+                            <th>Toplam Tutar</th>
+                            <th>Durum</th>
+                            <th>Fatura</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var purchase in Model)
+                        {
+                            <tr>
+                                <td data-label="Sipariş Numarası">@purchase.OrderNumber</td>
+                                <td data-label="Sipariş Tarihi">@purchase.PurchaseDate</td>
+                                <td data-label="Ürün Adı">@purchase.ProductName</td>
+                                <td data-label="Birim Fiyatı">@purchase.UnitPrice.ToString("C")</td>
+                                <td data-label="Miktar">@purchase.Quantity</td>
+                                <td data-label="Toplam Tutar">@purchase.TotalPrice.ToString("C")</td>
+                                <td data-label="Durum">@purchase.Status</td>
+                                <td data-label="Fatura">
+                                    <a asp-controller="User" asp-action="DownloadInvoice" asp-route-id="@purchase.PurchaseId" class="purchase-history-btn-primary">Faturayı İndir</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

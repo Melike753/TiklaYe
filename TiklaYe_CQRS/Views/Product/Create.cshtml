@@ -1,0 +1,96 @@
+﻿@model TiklaYe_CQRS.Models.Product
+
+@{
+    ViewData["Title"] = "Yeni Ürün Ekle";
+    Layout = "_AdminLayout";
+}
+
+@{
+    if (!ViewData.ModelState.IsValid)
+    {
+        foreach (var state in ViewData.ModelState)
+        {
+            foreach (var error in state.Value.Errors)
+            {
+                <div class="text-danger">@error.ErrorMessage</div>
+            }
+        }
+    }
+}
+
+<div class="app-body">
+    <div class="app-container">
+        <div class="main-body">
+            <div class="row">
+                <div class="app-card">
+                    <div class="app-card-header">
+                        <h2>Ürün Ekleme Sayfası</h2>
+                        <a class="app-btn-primary float-right" asp-action="Index">Geri</a>
+                    </div>
+                    <div class="app-card-block">
+                        <div class="row">
+                            <div>
+                                <form asp-controller="Product" asp-action="Create" method="post" enctype="multipart/form-data">
+                                    <div class="app-form-group">
+                                        <label asp-for="Name" class="control-label">Ürün Adı</label>
+                                        <input asp-for="Name" class="form-control" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="app-form-group">
+                                        <label asp-for="Description" class="control-label">Ürün Açıklaması</label>
+                                        <input asp-for="Description" class="form-control" />
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                    <div class="app-form-group">
+                                        <label asp-for="Price" class="control-label">Ürün Fiyatı</label>
+                                        <input asp-for="Price" class="form-control" />
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                    <div class="app-form-group">
+                                        <label asp-for="Quantity" class="control-label">Stok</label>
+                                        <input asp-for="Quantity" class="form-control" />
+                                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                                    </div>
+                                    <div class="app-form-group">
+                                        <label asp-for="imageFile">Görsel</label>
+                                        <input type="file" id="imageFile" name="imageFile" class="form-control" />
+                                        <span asp-validation-for="imageFile" class="text-danger"></span>
+                                        <img id="imagePreview" src="#" alt="Image Preview" style="display:none; max-width: 80px; margin-top: 10px;" />
+                                    </div>
+                                    <div class="app-form-group">
+                                        <label asp-for="CategoryId" class="control-label">Kategori</label>
+                                        <select asp-for="CategoryId" class="app-select-form-control" asp-items="ViewBag.CategoryId"></select>
+                                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                    </div>
+                                    <div class="app-form-check">
+                                        <input asp-for="IsActive" class="app-form-check-input" checked="@(Model.IsActive)" />
+                                        <label asp-for="IsActive" class="app-form-check-label">Aktif</label>
+                                    </div>
+                                    <input type="hidden" asp-for="ProductId" />
+                                    <button type="submit" class="app-btn-primary">Ekle</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('imageFile').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}

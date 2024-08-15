@@ -1,0 +1,67 @@
+﻿@model List<TiklaYe_CQRS.Models.CartItem>
+
+@{
+    ViewBag.Title = "Ödeme İşlemleri";
+    Layout = "_PageLayout";
+}
+
+<div class="payment_body">
+    <div class="pp-container">
+        <h2>Ödeme Seçenekleri</h2>
+        <button class="pp-btn pp-btn-primary" onclick="showPaymentSection('card-payment')">Kart ile Öde</button>
+        <button class="pp-btn pp-btn-secondary" onclick="showPaymentSection('cod-payment')">Kapıda Öde</button>
+
+        <div id="card-payment" class="pp-payment-section">
+            <form asp-controller="Order" asp-action="CompleteOrder" method="post">
+                <div class="pp-form-group">
+                    <label for="cardName">Kart Sahibinin Adı</label>
+                    <input type="text" id="cardName" name="CardName" required />
+                </div>
+                <div class="pp-form-group pp-card-number-group">
+                    <label>Kart Numarası</label>
+                    <div class="pp-card-number-input">
+                        <input type="text" id="cardNumber" maxlength="16" name="CardNumber" required />
+                        <i class="fab fa-cc-visa mx-1"></i>
+                        <i class="fab fa-cc-mastercard mx-1"></i>
+                        <i class="fab fa-cc-amex mx-1"></i>
+                    </div>
+                </div>
+                <div class="pp-form-group">
+                    <label for="expiryDate">Son Kullanma Tarihi (Ay/Yıl)</label>
+                    <input type="text" id="expiryDate" name="ExpiryDate" placeholder="MM/YY" maxlength="5" required />
+                </div>
+                <div class="pp-form-group">
+                    <label for="cvv">CVV <i class="fa fa-question-circle d-inline"></i></label>
+                    <input type="text" id="cvv" name="CVV" maxlength="3" required />
+                </div>
+                <div class="pp-form-group pp-checkbox-fade">
+                    <label>
+                        <input type="checkbox" value="true" name="SaveCard" />
+                        <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                        <span class="pp-text-inverse">Sonraki siparişlerde daha hızlı ödeme yapabilmek için kartımı Masterpass'e kaydet.</span>
+                    </label>
+                </div>
+                <p>Toplam Tutar: <strong>@ViewBag.TotalAmount</strong></p>
+                <button type="submit" class="pp-btn pp-btn-primary">Siparişi Tamamla</button>
+            </form>
+        </div>
+
+        <div id="cod-payment" class="pp-payment-section">
+            <form asp-controller="Order" asp-action="CompleteOrder" method="post">
+                <div class="pp-form-group">
+                    <label for="deliveryAddress">Teslim Adresi</label>
+                    <input type="text" id="deliveryAddress" name="DeliveryAddress" required />
+                </div>
+                <p>Toplam Tutar: <strong>@ViewBag.TotalAmount</strong></p>
+                <button type="submit" class="pp-btn pp-btn-primary">Siparişi Tamamla</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function showPaymentSection(section) {
+        document.getElementById('card-payment').classList.remove('active');
+        document.getElementById('cod-payment').classList.remove('active');
+        document.getElementById(section).classList.add('active');
+    }
+</script>

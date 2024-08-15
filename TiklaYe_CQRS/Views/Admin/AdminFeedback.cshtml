@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.Feedback>
+
+@{
+    ViewData["Title"] = "Geri Bildirimler";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-panel">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ad Soyad</th>
+                        <th>Email</th>
+                        <th>Konu</th>
+                        <th>Mesaj</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var feedback in Model)
+                    {
+                        <tr>
+                            <td>@feedback.Name</td>
+                            <td>@feedback.Email</td>
+                            <td>@feedback.Subject</td>
+                            <td>@feedback.Message</td>
+                            <td>@feedback.CreatedDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

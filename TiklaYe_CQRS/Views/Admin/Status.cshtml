@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.PurchaseGroupViewModel>
+
+@{
+    ViewData["Title"] = "Ürün Teslimat Durumu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="admin-panel">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Sipariş Numarası</th>
+                        <th>Sipariş Tarihi</th>
+                        <th>Ürünler</th>
+                        <th>Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var purchase in Model)
+                    {
+                        <tr>
+                            <td>@purchase.OrderNumber</td>
+                            <td>@purchase.PurchaseDate.ToString("dd MMM yyyy HH:mm")</td>
+                            <td class="purchased-products">
+                                <ul>
+                                    @foreach (var item in purchase.Items)
+                                    {
+                                        <li>@item.ProductName - @item.Quantity</li>
+                                    }
+                                </ul>
+                            </td>
+                            <td>
+                                <form method="post" action="@Url.Action("UpdateStatus", "Admin")">
+                                    <input type="hidden" name="orderNumber" value="@purchase.OrderNumber" />
+                                    <select name="status" class="admin-form-control">
+                                        <option value="Sipariş Hazırlanıyor" selected="@(purchase.Status == "Sipariş Hazırlanıyor")">Sipariş Hazırlanıyor</option>
+                                        <option value="Yolda" selected="@(purchase.Status == "Yolda")">Sipariş Yolda</option>
+                                        <option value="Teslim Edildi" selected="@(purchase.Status == "Teslim Edildi")">Teslim Edildi</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-secondary mt-2">Güncelle</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

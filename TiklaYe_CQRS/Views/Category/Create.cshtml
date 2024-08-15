@@ -1,0 +1,61 @@
+﻿@model TiklaYe_CQRS.Models.Category
+
+@{
+    ViewData["Title"] = "Kategori Ekle";
+    Layout = "_AdminLayout";
+}
+
+<div class="app-body">
+    <div class="app-container">
+        <div class="main-body">
+            <div class="row">
+                <div class="app-card">
+                    <div class="app-card-header">
+                        <h2>Kategori Ekleme Sayfası</h2>
+                        <a class="app-btn-primary float-right" asp-action="Index">Geri</a>
+                    </div>
+                    <div class="app-card-block">
+                        <div class="row">
+                            <div>
+                                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                                    <div class="app-form-group">
+                                        <label asp-for="Name" class="control-label">Kategori Adı</label>
+                                        <input asp-for="Name" class="form-control" required />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                    <div class="app-form-group">
+                                        <label asp-for="ImageUrlFile">Görsel</label>
+                                        <input type="file" id="ImageUrlFile" name="ImageUrlFile" class="form-control" />
+                                        <span asp-validation-for="ImageUrlFile" class="text-danger"></span>
+                                        <img id="imagePreview" src="#" alt="Image Preview" style="display:none; max-width: 80px; margin-top: 10px;" />
+                                    </div>
+                                    <div class="app-form-check">
+                                        <input asp-for="IsActive" class="app-form-check-input" checked="@(Model.IsActive)" />
+                                        <label asp-for="IsActive" class="app-form-check-label">Aktif</label>
+                                    </div>
+                                    <button type="submit" class="app-btn-primary">Ekle</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('ImageUrlFile').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}

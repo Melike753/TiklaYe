@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.Category>
+
+@{
+    ViewData["Title"] = "Kategoriler";
+    Layout = "_AdminLayout";
+}
+
+<div class="product-list-main-container">
+    <div class="product-list-card-container">
+        <div class="product-list-card-header-container">
+            <h4 class="product-list-card-header-title">Kategoriler</h4>
+            <a class="product-list-action-button-primary" asp-action="Create">Yeni Kategori Ekle</a>
+        </div>
+        <div class="product-list-card-content">
+            <div class="row">
+                <table class="product-list-table">
+                    <thead>
+                        <tr>
+                            <th>Kategori Adı</th>
+                            <th>Görsel</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td>@category.Name</td>
+                                <td><img src="@Url.Content(category.ImageUrl)" alt="Görsel" class="product-list-image-thumbnail" style="width: 70px;" /></td>
+                                <td>@(category.IsActive ? "Aktif" : "Pasif")</td>
+                                <td class="product-list-row-actions">
+                                    <a href="@Url.Action("Edit", new { id = category.CategoryId })" class="product-list-action-button-primary">Düzenle</a>
+                                    <form asp-action="Delete" asp-route-id="@category.CategoryId" method="post" style="display:inline;" onsubmit="return confirm('Bu kategoriyi silmek istediğinize emin misiniz?');">
+                                        <button type="submit" class="product-list-action-button-danger">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('CategoryImage').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}

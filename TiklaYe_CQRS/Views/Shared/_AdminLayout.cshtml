@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <link rel="shortcut icon" href="/images/logo1.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/admin.js"></script>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/admin.css">
+    @RenderSection("Styles", required: false)
+</head>
+<body class="admin-dashboard">
+    <div class="admin-flex">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-content">
+                <a class="admin-sidebar-title" href="#">
+                    Admin Panel
+                </a>
+                <nav class="admin-sidebar-nav">
+                    <ul>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Admin" asp-action="Index">
+                                <i class="material-icons">home</i>
+                                <span>Anasayfa</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Category" asp-action="Index">
+                                <i class="material-icons">view_list</i>
+                                <span>Kategoriler</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Product" asp-action="Index">
+                                <i class="material-icons">fastfood</i>
+                                <span>Ürünler</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Admin" asp-action="Status">
+                                <i class="material-icons">directions_bike</i>
+                                <span>Ürün Teslimat Durumu</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Admin" asp-action="User">
+                                <i class="material-icons">people</i>
+                                <span>Kullanıcılar</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Admin" asp-action="AdminFeedback">
+                                <i class="material-icons">feedback</i>
+                                <span>Geri Bildirimler</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Admin" asp-action="SalesReport">
+                                <i class="material-icons">description</i>
+                                <span>Satış Raporu</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Admin" asp-action="BusinessRequests">
+                                <i class="material-icons">check_circle</i>
+                                <span>İşletme Onay İşlemleri</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Admin" asp-action="ViewBusinesses">
+                                <i class="material-icons">business</i>
+                                <span>İşletmeler</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="Admin" asp-action="ListBusinesses">
+                                <i class="material-icons">restaurant_menu</i>
+                                <span>Restoranlar</span>
+                            </a>
+                        </li>
+                        <!-- Çıkış Yap -->
+                        <li class="sidebar-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="sidebar-link">
+                                <button type="submit" style="background:none; border:none; color:inherit; padding:0; margin:0; cursor:pointer;">
+                                    <i class="material-icons" style="vertical-align: middle; line-height: 24px;">exit_to_app</i>
+                                    <span style="vertical-align: middle;">Çıkış Yap</span>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <div class="admin-main-content">
+            <header class="admin-header">
+                <div class="admin-container">
+                    <h1 class="header-title">@ViewData["Title"]</h1>
+                </div>
+            </header>
+
+            @RenderBody()
+
+        </div>
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

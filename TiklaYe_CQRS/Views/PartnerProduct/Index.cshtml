@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.PartnerProduct>
+
+@{
+    ViewData["Title"] = "Ürün Listesi";
+    Layout = "_PageLayout";
+}
+
+<header class="product-header">
+    <div class="product-container">
+        <h1 class="product-header-title">Restoran Ürünleri</h1>
+    </div>
+</header>
+<div class="product-list-main-container">
+    <div class="product-list-card-container">
+        <div class="product-list-card-header-container">
+            <h4 class="product-list-card-header-title">@ViewData["Title"]</h4>
+            <div class="product-list-action-buttons">
+                <a class="product-list-action-button-primary" href="@Url.Action("RestaurantRevenue", "Business")">Satış Raporu</a>
+                <a class="product-list-action-button-primary" href="@Url.Action("AddProduct", "PartnerProduct")">Yeni Ürün Ekle</a>
+            </div>
+        </div>
+        <div class="product-list-card-content">
+            <div class="row">
+                <table class="product-list-table">
+                    <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Açıklama</th>
+                            <th>Fiyat</th>
+                            <th>Stok</th>
+                            <th>Görsel</th>
+                            <th>Kategori</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.Name</td>
+                                <td>@product.Description</td>
+                                <td>@product.Price</td>
+                                <td>@product.Quantity</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                                    {
+                                        <img src="@Url.Content(product.ImageUrl)" alt="Görsel" class="product-list-image-thumbnail" style="width: 70px;" />
+                                    }
+                                    else
+                                    {
+                                        <span>Yok</span>
+                                    }
+                                </td>
+                                <td>@product.Category?.Name</td> <!-- Kategori Adı -->
+                                <td>@(product.IsActive ? "Aktif" : "Pasif")</td>
+                                <td class="product-list-row-actions">
+                                    <a href="@Url.Action("EditProduct","PartnerProduct", new { id = product.ProductId })" class="product-list-action-button-primary">Düzenle</a>
+                                    <form method="post" asp-action="DeleteProduct" asp-controller="PartnerProduct" asp-route-id="@product.ProductId">
+                                        <button type="submit" class="product-list-action-button-danger">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('ProductImage').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}

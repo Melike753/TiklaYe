@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.BusinessOwner>
+
+@{
+    ViewData["Title"] = "Restoranlar";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-panel">
+    <div class="card">
+        <div class="card-body card-body-list">
+            <div class="business-sidebar">
+                <ul class="list-group">
+                    @foreach (var business in Model)
+                    {
+                        <li class="list-group-item">
+                            <a asp-action="ViewProducts" asp-route-businessOwnerId="@business.BusinessOwnerId">@business.RestaurantName</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="product-content">
+                <div id="products-list">
+                    <!-- Seçilen işletmenin ürünleri burada listelenecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

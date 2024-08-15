@@ -1,0 +1,48 @@
+﻿@model List<TiklaYe_CQRS.Models.User>
+
+@{
+    ViewData["Title"] = "Kullanıcılar";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-panel">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Kişi</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>E-posta</th>
+                        <th>Adı</th>
+                        <th>Telefon</th>
+                        <th>Adres</th>
+                        <th>Posta Kodu</th>
+                        <th>Kayıt Tarihi</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td><i class="material-icons">person</i></td>
+                            <td>@user.Username</td>
+                            <td>@user.Email</td>
+                            <td>@user.Name</td>
+                            <td>@user.Mobile</td>
+                            <td>@user.Address</td>
+                            <td>@user.PostCode</td>
+                            <td>@user.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                            <td>
+                                <form method="post" asp-action="Delete" asp-route-id="@user.UserId">
+                                    <button type="submit" class="btn btn-secondary">Kullanıcıyı Sil</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

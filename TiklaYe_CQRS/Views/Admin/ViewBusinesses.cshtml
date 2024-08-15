@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.BusinessOwner>
+
+@{
+    ViewData["Title"] = "İşletmeler";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-panel">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>İşletme Adı</th>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>E-posta</th>
+                            <th>Telefon</th>
+                            <th>Firma Bilgi</th>
+                            <th>Durum</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var business in Model)
+                        {
+                            <tr>
+                                <td>@business.RestaurantName</td>
+                                <td>@business.FirstName</td>
+                                <td>@business.LastName</td>
+                                <td>@business.Email</td>
+                                <td>@business.PhoneNumber</td>
+                                <td>
+                                    <a href="@Url.Content("~/uploads/" + System.IO.Path.GetFileName(business.PdfFilePath))" target="_blank">PDF'yi Görüntüle</a>
+                                </td>
+                                <td>@(business.IsActive ? "Aktif" : "Pasif")</td>
+                                <td>
+                                    @if (business.IsActive)
+                                    {
+                                        <form method="post" asp-action="DeactivateBusiness" asp-route-id="@business.BusinessOwnerId">
+                                            <button type="submit" class="btn btn-secondary">İşletmeyi Pasifleştir</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form method="post" asp-action="ActivateBusiness" asp-route-id="@business.BusinessOwnerId">
+                                            <button type="submit" class="btn btn-secondary">İşletmeyi Aktifleştir</button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

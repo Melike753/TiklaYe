@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.PartnerProduct>
+
+@{
+    var businessOwner = ViewBag.BusinessOwner as TiklaYe_CQRS.Models.BusinessOwner;
+    Layout = null;
+}
+
+<h1 class="restaurant-title"> @businessOwner.RestaurantName </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ürün</th>
+            <th>Ürün Adı</th>
+            <th>Açıklama</th>
+            <th>Fiyat</th>
+            <th>Adet</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img src="@Url.Content(product.ImageUrl)" alt="Görsel" class="img-thumbnail" />
+                    }
+                    else
+                    {
+                        <span>Bulunamadı.</span>
+                    }
+                </td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>@product.Quantity</td>
+                <td>@(product.IsActive ? "Aktif" : "Pasif")</td>
+                <td>
+                    <form method="post" asp-action="DeletePartnerProduct" asp-controller="Admin" asp-route-id="@product.ProductId" style="display:inline;">
+                        <button type="submit" class="btn btn-secondary btn-sm">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

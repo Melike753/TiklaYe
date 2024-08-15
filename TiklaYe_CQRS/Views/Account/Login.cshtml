@@ -1,0 +1,35 @@
+﻿@model TiklaYe_CQRS.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Kullanıcı Giriş Sayfası";
+    Layout = "_PageLayout";
+}
+
+<section class="account-page">
+    <div class="account-container">
+        <form id="loginForm" asp-action="Login" asp-controller="Account" method="post">
+            <div class="account-title">Giriş Yap</div>
+            <hr />
+            <div class="account-input-group user-login">
+                <input asp-for="Email" class="form-control" placeholder="E-posta Adresi"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="account-input-group user-login">
+                <input asp-for="Password" class="form-control" type="password" placeholder="Şifre"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="account-checkbox">
+                <label>
+                    <input type="checkbox" value="">
+                    <span class="text-inverse">Beni Hatırla</span>
+                </label>
+            </div>
+            <div>
+                <button type="submit" class="account-button">Giriş Yap</button>
+            </div>
+            <div class="register-login">
+                <p>Hesabınız yok mu? <a asp-controller="Account" asp-action="Register">Kayıt Ol</a></p>
+            </div>
+        </form>
+    </div>
+</section>

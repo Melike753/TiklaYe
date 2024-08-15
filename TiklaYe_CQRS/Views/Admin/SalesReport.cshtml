@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TiklaYe_CQRS.Models.SalesReportViewModel>
+
+@{
+    ViewData["Title"] = "Satış Raporu";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-panel">
+    <div class="card">
+        <div class="card-body">
+            <form class="admin-form-inline" method="get" action="@Url.Action("SalesReport", "Admin")">
+                <div class="admin-form-group">
+                    <label for="startDate">Başlangıç Tarihi:</label>
+                    <input type="date" name="startDate" id="startDate" class="admin-form-control" value="@Context.Request.Query["startDate"]" />
+                </div>
+                <div class="admin-form-group">
+                    <label for="endDate">Bitiş Tarihi:</label>
+                    <input type="date" name="endDate" id="endDate" class="admin-form-control" value="@Context.Request.Query["endDate"]" />
+                </div>
+                <button type="submit" class="btn btn-secondary">Filtrele</button>
+            </form>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Kullanıcı ID</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Kullanıcı Email</th>
+                        <th>Toplam Sipariş Sayısı</th>
+                        <th>Toplam Tutar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.UserId</td>
+                            <td>@item.Name</td>
+                            <td>@item.Email</td>
+                            <td>@item.TotalOrders</td>
+                            <td>@item.TotalAmount.ToString("C")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h3>Toplam Gelir: @ViewBag.TotalRevenue.ToString("C")</h3>
+        </div>
+    </div>
+</div>

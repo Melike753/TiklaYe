@@ -1,0 +1,66 @@
+﻿@model TiklaYe_CQRS.Commands.RegisterCommand
+
+@{
+    ViewData["Title"] = "İşletmeci Kayıt Sayfası";
+    Layout = "_PageLayout";
+}
+
+<div class="business-account-page">
+    <div class="business-header">
+        <div class="business-header-content">
+            <div class="business-header-left">
+                <a href="/Home">
+                    <h2 class="business-title">TıklaYe</h2>
+                </a>
+            </div>
+            <div class="business-header-right">
+                <a class="button-login" href="/Business/Login">Giriş Yap</a>
+            </div>
+        </div>
+    </div>
+    <div class="business-main-container">
+        <div class="business-container">
+            <h2 class="business-title">TıklaYe</h2>
+            <p class="business-description">İşletmenizi büyütmeye hazır mısınız? <br />Şimdi harekete geçin ve avantajlarla dolu dünyamıza adım atın!</p>
+            <div class="business-row">
+                <div class="business-col">
+                    <div class="business-form-container">
+                        <form asp-controller="Business" asp-action="Register" method="post" enctype="multipart/form-data">
+                            <div class="business-form-group">
+                                <input asp-for="FirstName" class="form-control" placeholder="İşletme Sahibinin Adı" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="business-form-group">
+                                <input asp-for="LastName" class="form-control" placeholder="İşletme Sahibinin Soyadı" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="business-form-group">
+                                <input asp-for="Email" class="form-control" placeholder="İşletme E-postanızı Girin" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="business-form-group">
+                                <input asp-for="PhoneNumber" class="form-control" placeholder="Cep Telefonu Numarası" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="business-form-group">
+                                <input asp-for="Password" class="form-control" type="password" placeholder="Şifre Belirleyiniz" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="business-form-group">
+                                <input asp-for="RestaurantName" class="form-control" placeholder="İşletme Adı" />
+                                <span asp-validation-for="RestaurantName" class="text-danger"></span>
+                            </div>
+                            <div class="business-form-group">
+                                <label asp-for="PdfFile">Firma Bilgi Dosyası</label>
+                                <input asp-for="PdfFile" type="file" class="form-control" />
+                                <span asp-validation-for="PdfFile" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="business-submit-button">Başlayalım</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/site.js"></script>
